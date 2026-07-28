@@ -1,6 +1,8 @@
 [![Netlify + Astro](https://user-images.githubusercontent.com/43764894/223559085-8ff69d2f-4247-427f-a3a6-d2036b00082a.png)](https://ntl.fyi/3LZGn73)
 
-# Astro Quickstart Template   
+# Astro Quickstart Template
+
+> **Restaurant Online Ordering:** See [`restaurant-ordering/README.md`](restaurant-ordering/README.md) for a complete WordPress + WooCommerce system with automatic kitchen ticket printing.
 
 This is a bare-bones Astro project that has everything you need to quickly deploy it to [Netlify](https://netlify.com). 
 

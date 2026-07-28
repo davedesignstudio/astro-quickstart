@@ -1,0 +1,19 @@
+.rap-admin-wrap .rap-admin-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 1rem 1.25rem;
+	margin: 1rem 0 1.5rem;
+	max-width: 800px;
+}
+
+.rap-admin-wrap .rap-admin-card--highlight {
+	border-left: 4px solid #f97316;
+}
+
+.rap-admin-wrap .rap-admin-url {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	background: #f0f0f1;
+	font-size: 14px;
+}

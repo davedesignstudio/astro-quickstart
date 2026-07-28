@@ -1,0 +1,147 @@
+/*
+Theme Name: Restaurant Ordering
+Description: Clean, mobile-friendly theme for restaurant online ordering with WooCommerce.
+Version: 1.0.0
+Author: Restaurant Ordering System
+Requires at least: 6.0
+Tested up to: 6.6
+Requires PHP: 8.0
+Text Domain: restaurant-ordering
+*/
+
+:root {
+	--ro-primary: #f97316;
+	--ro-dark: #111827;
+	--ro-muted: #6b7280;
+	--ro-bg: #f8fafc;
+	--ro-card: #ffffff;
+	--ro-border: #e5e7eb;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body.restaurant-ordering-theme {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	background: var(--ro-bg);
+	color: var(--ro-dark);
+	line-height: 1.5;
+}
+
+.ro-container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.ro-header {
+	background: var(--ro-dark);
+	color: #fff;
+	padding: 1rem 0;
+}
+
+.ro-header__inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.ro-brand a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.ro-tagline {
+	margin: 0.15rem 0 0;
+	color: #d1d5db;
+	font-size: 0.9rem;
+}
+
+.ro-nav {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.ro-nav a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.ro-nav a:hover,
+.ro-cart-link:hover {
+	color: var(--ro-primary);
+}
+
+.ro-main {
+	padding: 2rem 0 3rem;
+}
+
+.ro-footer {
+	background: #1f2937;
+	color: #d1d5db;
+	padding: 1.5rem 0;
+	font-size: 0.9rem;
+}
+
+.woocommerce ul.products {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 1.25rem;
+}
+
+.woocommerce ul.products li.product {
+	background: var(--ro-card);
+	border: 1px solid var(--ro-border);
+	border-radius: 0.75rem;
+	padding: 1rem;
+	margin: 0 !important;
+	width: 100% !important;
+}
+
+.woocommerce ul.products li.product .button,
+.woocommerce a.button,
+.woocommerce button.button {
+	background: var(--ro-primary) !important;
+	color: #fff !important;
+	border-radius: 0.5rem !important;
+	font-weight: 600;
+}
+
+.woocommerce ul.products li.product .price {
+	color: var(--ro-dark);
+	font-weight: 700;
+}
+
+.woocommerce .woocommerce-ordering,
+.woocommerce .woocommerce-result-count {
+	margin-bottom: 1rem;
+}
+
+.woocommerce-cart .cart-collaterals,
+.woocommerce-checkout .col2-set {
+	background: var(--ro-card);
+	border: 1px solid var(--ro-border);
+	border-radius: 0.75rem;
+	padding: 1rem;
+}
+
+.woocommerce-info,
+.woocommerce-message {
+	border-top-color: var(--ro-primary);
+}
+
+@media (max-width: 640px) {
+	.ro-header__inner {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
