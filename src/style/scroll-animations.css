@@ -1,0 +1,59 @@
+/* Scroll-triggered slide animations */
+
+:root {
+  --animate-duration: 0.75s;
+  --animate-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-distance: 48px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Only hide elements after JS has initialized animation support */
+html.js-animate .animate-on-scroll {
+  opacity: 0;
+  transition:
+    opacity var(--animate-duration) var(--animate-ease),
+    transform var(--animate-duration) var(--animate-ease);
+  transition-delay: var(--animate-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+html.js-animate .animate-on-scroll[data-animate='up'],
+html.js-animate .animate-on-scroll:not([data-animate]) {
+  transform: translateY(var(--animate-distance));
+}
+
+html.js-animate .animate-on-scroll[data-animate='down'] {
+  transform: translateY(calc(var(--animate-distance) * -1));
+}
+
+html.js-animate .animate-on-scroll[data-animate='left'] {
+  transform: translateX(calc(var(--animate-distance) * -1));
+}
+
+html.js-animate .animate-on-scroll[data-animate='right'] {
+  transform: translateX(var(--animate-distance));
+}
+
+html.js-animate .animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.js-animate .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

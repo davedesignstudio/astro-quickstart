@@ -124,6 +124,27 @@ html {
   line-height: 30px;
 }
 
+.scroll-showcase {
+  width: min(720px, 90%);
+  margin: 8% auto 12%;
+  text-align: center;
+}
+
+.scroll-showcase h2 {
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+}
+
+.scroll-showcase p {
+  margin: 0 0 3.5rem;
+  line-height: 1.6;
+  color: #0d1d24;
+}
+
+.scroll-showcase p:last-child {
+  margin-bottom: 0;
+}
+
 footer {
   margin: 0 auto;
   width: 100%;
