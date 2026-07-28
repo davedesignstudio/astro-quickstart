@@ -133,3 +133,37 @@ footer {
 footer img {
   width: 20px;
 }
+
+/* Scroll-triggered slide animations */
+.animate-on-scroll {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--animate-delay, 0s),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--animate-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.slide-up {
+  transform: translateY(48px);
+}
+
+.animate-on-scroll.slide-left {
+  transform: translateX(-48px);
+}
+
+.animate-on-scroll.slide-right {
+  transform: translateX(48px);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
