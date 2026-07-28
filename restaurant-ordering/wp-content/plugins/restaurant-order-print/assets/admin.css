@@ -1,0 +1,18 @@
+.rop-settings-wrap .form-table th {
+    width: 220px;
+}
+
+.rop-settings-wrap h2 {
+    margin-top: 2em;
+    padding-top: 0.5em;
+    border-top: 1px solid #ddd;
+}
+
+.rop-settings-wrap h2:first-of-type {
+    margin-top: 1em;
+    border-top: none;
+}
+
+.rop-settings-wrap .description {
+    max-width: 600px;
+}

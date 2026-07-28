@@ -1,0 +1,18 @@
+{
+  "name": "restaurant/order-print",
+  "description": "Auto-print kitchen tickets for WooCommerce restaurant orders",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=7.4",
+    "mike42/escpos-php": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "RestaurantOrderPrint\\": "includes/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  }
+}
