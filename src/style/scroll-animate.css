@@ -1,0 +1,31 @@
+@media (prefers-reduced-motion: no-preference) {
+  [data-animate] {
+    opacity: 0;
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--animate-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  [data-animate='slide-up'] {
+    transform: translateY(48px);
+  }
+
+  [data-animate='slide-down'] {
+    transform: translateY(-48px);
+  }
+
+  [data-animate='slide-left'] {
+    transform: translateX(48px);
+  }
+
+  [data-animate='slide-right'] {
+    transform: translateX(-48px);
+  }
+
+  [data-animate].is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
