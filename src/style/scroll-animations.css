@@ -1,0 +1,44 @@
+/* Scroll-triggered slide animations */
+
+.animate-on-scroll {
+  opacity: 0;
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.from-left {
+  transform: translateX(-64px);
+}
+
+.animate-on-scroll.from-right {
+  transform: translateX(64px);
+}
+
+.animate-on-scroll.from-bottom {
+  transform: translateY(64px);
+}
+
+.animate-on-scroll.from-top {
+  transform: translateY(-48px);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Optional stagger via CSS custom property */
+.animate-on-scroll {
+  transition-delay: var(--animate-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

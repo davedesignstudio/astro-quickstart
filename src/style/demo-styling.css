@@ -103,6 +103,7 @@ html {
   font-size: larger;
   text-align: center;
   width: 100%;
+  padding: 4% 0 6%;
 }
 
 .resource-list ul {
@@ -112,6 +113,7 @@ html {
   display: flex;
   justify-content: center;
   padding: 2%;
+  flex-wrap: wrap;
 }
 
 .resource-list li {
@@ -122,6 +124,51 @@ html {
 .resource-list a {
   color: black;
   line-height: 30px;
+}
+
+.features,
+.next-steps {
+  width: min(920px, 90%);
+  margin: 0 auto;
+  padding: 6% 0;
+  text-align: center;
+}
+
+.features p,
+.next-steps p {
+  line-height: 1.6;
+  max-width: 42rem;
+  margin: 0.75rem auto 0;
+}
+
+.feature-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  text-align: left;
+}
+
+.feature-grid li {
+  padding: 0;
+}
+
+.feature-grid h3 {
+  margin: 0 0 0.5rem;
+}
+
+.feature-grid p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 800px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 footer {
