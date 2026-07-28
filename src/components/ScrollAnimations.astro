@@ -1,0 +1,64 @@
+---
+import '../style/scroll-animations.css';
+---
+
+<script>
+  const ANIMATE_SELECTORS = [
+    'main h1',
+    'main h2',
+    'main h3',
+    'main p',
+    'main .logo',
+    'main .bttns',
+    'main a.bttn',
+    'main .resource-list',
+    'main .resource-list li',
+    'main section',
+    'main article',
+    'main footer',
+  ].join(', ');
+
+  const DIRECTIONS = ['slide-up', 'slide-left', 'slide-right'] as const;
+
+  function initScrollAnimations() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const elements = document.querySelectorAll<HTMLElement>(ANIMATE_SELECTORS);
+
+    if (elements.length === 0) {
+      return;
+    }
+
+    elements.forEach((element, index) => {
+      element.classList.add('scroll-animate', DIRECTIONS[index % DIRECTIONS.length]);
+      element.style.setProperty('--scroll-delay', `${(index % 4) * 0.1}s`);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px',
+      },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollAnimations);
+  } else {
+    initScrollAnimations();
+  }
+
+  document.addEventListener('astro:page-load', initScrollAnimations);
+</script>
