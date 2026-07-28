@@ -1,0 +1,36 @@
+[data-scroll] {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-scroll='up'] {
+  transform: translateY(48px);
+}
+
+[data-scroll='down'] {
+  transform: translateY(-48px);
+}
+
+[data-scroll='left'] {
+  transform: translateX(-48px);
+}
+
+[data-scroll='right'] {
+  transform: translateX(48px);
+}
+
+[data-scroll].is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
