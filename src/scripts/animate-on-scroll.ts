@@ -32,12 +32,25 @@ function ensureAnimateClass(el: Element, index: number): void {
   }
 }
 
+function isNestedAnimateTarget(el: Element, collection: Set<Element>): boolean {
+  let parent = el.parentElement;
+  while (parent) {
+    if (collection.has(parent) || parent.classList.contains('animate-on-scroll')) {
+      return true;
+    }
+    parent = parent.parentElement;
+  }
+  return false;
+}
+
 export function initAnimateOnScroll(): void {
   if (prefersReducedMotion()) return;
 
   const tagged = Array.from(document.querySelectorAll('.animate-on-scroll'));
   const auto = Array.from(document.querySelectorAll(AUTO_SELECTORS));
-  const elements = Array.from(new Set([...tagged, ...auto]));
+  const candidates = Array.from(new Set([...tagged, ...auto]));
+  const candidateSet = new Set(candidates);
+  const elements = candidates.filter((el) => !isNestedAnimateTarget(el, candidateSet));
 
   elements.forEach((el, index) => ensureAnimateClass(el, index));
 
