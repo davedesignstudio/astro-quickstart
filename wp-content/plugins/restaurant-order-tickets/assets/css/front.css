@@ -1,0 +1,14 @@
+.rot-checkout-fields {
+  margin: 1.5rem 0 1rem;
+  padding: 1.25rem 1.25rem 0.5rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.rot-checkout-fields h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.rot-checkout-fields textarea {
+  min-height: 90px;
+}

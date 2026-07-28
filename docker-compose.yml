@@ -1,0 +1,65 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-wordpress}
+      MYSQL_USER: ${MYSQL_USER:-wordpress}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-wordpress}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:6.7-php8.2-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WP_PORT:-8080}:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-wordpress}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-wordpress}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DEBUG', false);
+        define('ROT_PRINTNODE_API_KEY', getenv('ROT_PRINTNODE_API_KEY') ?: '');
+    env_file:
+      - .env
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-content/plugins/restaurant-order-tickets:/var/www/html/wp-content/plugins/restaurant-order-tickets
+      - ./mu-plugins:/var/www/html/wp-content/mu-plugins
+
+  wpcli:
+    image: wordpress:cli-php8.2
+    depends_on:
+      db:
+        condition: service_healthy
+      wordpress:
+        condition: service_started
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-wordpress}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-wordpress}
+      ROT_PRINTNODE_API_KEY: ${ROT_PRINTNODE_API_KEY:-}
+      ROT_PRINTNODE_PRINTER_ID: ${ROT_PRINTNODE_PRINTER_ID:-}
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-content/plugins/restaurant-order-tickets:/var/www/html/wp-content/plugins/restaurant-order-tickets
+      - ./mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ./scripts:/scripts
+    user: "33:33"
+    entrypoint: ["wp", "--allow-root", "--path=/var/www/html"]
+
+volumes:
+  db_data:
+  wp_data:

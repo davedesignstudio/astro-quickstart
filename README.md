@@ -1,182 +1,109 @@
-[![Netlify + Astro](https://user-images.githubusercontent.com/43764894/223559085-8ff69d2f-4247-427f-a3a6-d2036b00082a.png)](https://ntl.fyi/3LZGn73)
+# Restaurant Online Ordering (WordPress + WooCommerce)
 
-# Astro Quickstart Template   
+Online ordering for restaurants with **automatic kitchen ticket printing** as soon as an order is placed.
 
-This is a bare-bones Astro project that has everything you need to quickly deploy it to [Netlify](https://netlify.com). 
+Built on WordPress + WooCommerce, plus a custom plugin (`restaurant-order-tickets`) that:
 
-Hate reading, here's a video: https://youtu.be/SknFflQVOys!
+- Adds restaurant checkout fields (pickup / delivery / dine-in, requested time, kitchen notes)
+- Builds a kitchen ticket the moment checkout completes
+- Sends the ticket to a thermal/receipt printer via [PrintNode](https://www.printnode.com/) (no clicks)
+- Falls back to a live **Kitchen Display** that chimes and browser-prints new tickets
 
-Love reading, here's blog post: www.netlify.app/blog/deploy-your-astro-project-fast/!
+## Quick start
 
-## Table of Contents:
+### Requirements
 
-- [Quick Setup + Deploy Option](#quick-setup--deploy-option)
-- [Regular Setup](#regular-setup)
-  - [Cloning + Install Packages](#1-cloning--install-packages)
-  - [Deploying](#2-deploying)
-- [Astro + Netlify Resources](#astro--netlify-resources)
-- [Project Structure](#project-structure)
-- [Styling](#styling)
-  - [Notes on Styling](#notes-on-styling)
-  - [Remove Styling](#remove-styling)
-- [Commands](#commands)
-- [Testing](#testing)
-  - [Included Default Testing](#included-default-testing)
-  - [Removing Renovate](#removing-renovate)
-  - [Removing Cypress](#removing-cypress)
-- [Want to learn more?](#want-to-learn-more)
+- Docker + Docker Compose
+- (Optional) Free [PrintNode](https://app.printnode.com/) account for silent auto-print
 
-## Quick Setup + Deploy Option
-
-Click this button and it will help you create a new repo, create a new Netlify project, and deploy!
-
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-quickstart)
-
-## Regular Setup
-
- ### 1. Cloning + Install Packages
-
-  - Clone this repo with one of these options:
-
-    - Click the 'Use this template' button at the top of the page
-    - Or via the command line `git clone https://github.com/netlify-templates/astro-quickstart`
-
-  - Then install the necessary packages and run the project locally to make sure everything works.
-
-    ```bash
-    npm install
-    npm run dev
-    ```
-
-  > Alternatively, you can run this locally with [the Netlify CLI](https://docs.netlify.com/cli/get-started/)'s by running the `netlify dev` command for more options like receiving a live preview to share (`netlify dev --live`) and the ability to test [Netlify Functions](https://www.netlify.com/products/functions) and [redirects](https://docs.netlify.com/routing/redirects/). 
-
-  ### 2. Deploying
-  - Install the Netlify CLI globally `npm install netlify-cli -g`
-    
-  - Run `npm run build`
-
-  - Then use the `netlify deploy` for a deploy preview link or `netlify deploy --prod` to deploy to production
-
-  Here are a few other ways you can deploy this template:
-    
-  - Use the Netlify CLI's create from template command `netlify sites:create-template astro-quickstart` which will create a repo, Netlify project, and deploy it
-    
-  - If you want to utilize continuous deployment through GitHub webhooks, run the Netlify command `netlify init` to create a new project based on your repo or `netlify link` to connect your repo to an existing project
-
-## Astro + Netlify Resources
-
-Here are some resources to help you on your Astro + Netlify coding fun!
-
-- [Astro on Netlify Integration Page](https://docs.netlify.com/integrations/frameworks/astro)
-
-- [Build wicked fast sites with Astro: An Introduction](https://www.netlify.com/blog/2021/07/08/build-wicked-fast-sites-with-astro-an-introduction/#main)
-
-- [A Template for Building Shopify Stores with Astro and the Storefront API](https://www.netlify.com/blog/2021/07/23/build-a-modern-shopping-site-with-astro-and-serverless-functions)
-
-Hope this template helps :) Happy coding 👩🏻‍💻!
-
----
-
-## Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   └── Layout.astro
-│   ├── pages/
-│   │   └── index.astro
-│   └── style/
-│       └── demo-styling.css
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components or layouts.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## Styling
-
-We've added some modern styling to this template using css within an external stylesheet, this will allow you to easily remove our styling and add in your own. 
-
-If you decide that you want to keep our styling you can review our style notes below. 
-
-### Notes on Styling
-
-The variables below give you the ability to change the gradient colors of the blobs and are interpolated into the URL string of the background-img within the body. 
-
-```css
-// Controls the blob blur gradient colors within the main tag's svg
---top-right-blur-1: #20C6B7;
---top-right-blur-2: #4D9ABF;
---bttm-left-blur-1: #FF5C02;
---bttm-left-blur-2: #FFCDB1;
-```
-
-### Remove Styling
-
-If you decide that our styling is not for you, all you'll need to do is remove the [demo-styling.css](https://github.com/netlify-templates/astro-quickstart/tree/main/src/style/demo-styling.css) file. 
-
-
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3000`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
-
-## Testing
-
-### Included Default Testing
-
-We’ve included some tooling that helps us maintain these templates. This template currently uses:
-
-- [Renovate](https://www.mend.io/free-developer-tools/renovate/) - to regularly update our dependencies
-- [Cypress](https://www.cypress.io/) - to run tests against how the template runs in the browser
-- [Cypress Netlify Build Plugin](https://github.com/cypress-io/netlify-plugin-cypress) - to run our tests during our build process
-
-If your team is not interested in this tooling, you can remove them with ease!
-
-### Removing Renovate
-
-In order to keep our project up-to-date with dependencies we use a tool called [Renovate](https://github.com/marketplace/renovate). If you’re not interested in this tooling, delete the `renovate.json` file and commit that onto your main branch.
-
-### Removing Cypress
-
-For our testing, we use [Cypress](https://www.cypress.io/) for end-to-end testing. This makes sure that we can validate that our templates are rendering and displaying as we’d expect. By default, we have Cypress not generate deploy links if our tests don’t pass. If you’d like to keep Cypress and still generate the deploy links, go into your `netlify.toml` and delete the plugin configuration lines:
-
-```diff
-[[plugins]]
-  package = "netlify-plugin-cypress"
--  [plugins.inputs.postBuild]
--    enable = true
--
--  [plugins.inputs]
--    enable = false 
-```
-
-If you’d like to remove the `netlify-plugin-cypress` build plugin entirely, you’d need to delete the entire block above instead. And then make sure sure to remove the package from the dependencies using:
+### Setup
 
 ```bash
-npm uninstall -D netlify-plugin-cypress
+cp .env.example .env
+# optional: set ROT_PRINTNODE_API_KEY and ROT_PRINTNODE_PRINTER_ID
+bash scripts/setup.sh
 ```
 
-And lastly if you’d like to remove Cypress entirely, delete the entire `cypress` folder and the `cypress.config.ts` file. Then remove the dependency using:
+Then open:
+
+| URL | Purpose |
+| --- | --- |
+| http://localhost:8080 | Customer storefront / menu |
+| http://localhost:8080/wp-admin | WordPress admin |
+| http://localhost:8080/kitchen-display/ | Kitchen screen (shop manager login) |
+
+Default admin login comes from `.env` (`admin` / `changeme` unless you change it).
+
+## How auto-print works
+
+```text
+Customer checkout
+       │
+       ▼
+WooCommerce creates order
+       │
+       ▼
+Restaurant Order Tickets plugin
+  • builds ticket (items, type, time, notes)
+  • marks order for kitchen queue
+       │
+       ├─► PrintNode API ──► kitchen printer (silent)
+       │
+       └─► Kitchen Display polls REST API
+             • chime on new order
+             • optional browser print backup
+```
+
+### PrintNode (recommended for silent printing)
+
+1. Create a PrintNode account and install the desktop client on the kitchen computer.
+2. Connect your receipt/thermal printer to that computer.
+3. In WordPress go to **WooCommerce → Kitchen Tickets**.
+4. Paste your API key, choose the printer, enable auto-print, save.
+5. Place a test order — the ticket should print immediately.
+
+Without PrintNode, keep the kitchen display open with **Auto-print new tickets** checked. New orders will still appear and print from the browser.
+
+## Plugin features
+
+- Immediate print hook on `woocommerce_checkout_order_processed` and Store API checkouts
+- Re-print when order status moves to Processing / On hold (configurable)
+- Thermal-friendly plain-text ticket + HTML ticket
+- Admin **Reprint kitchen ticket** button on each order
+- Shortcode `[restaurant_kitchen_display]` if you prefer a WP page over `/kitchen-display/`
+- Sample menu seeder (`scripts/bootstrap-menu.sh`)
+
+## Project layout
+
+```text
+docker-compose.yml          WordPress + MySQL + WP-CLI
+mu-plugins/                 Light restaurant store defaults
+scripts/setup.sh            One-command install
+scripts/bootstrap-menu.sh   Sample menu items
+wp-content/plugins/restaurant-order-tickets/
+  restaurant-order-tickets.php
+  includes/                 Settings, checkout, PrintNode, hooks, KDS, REST
+  templates/                Ticket + kitchen + admin UI
+  assets/                   CSS / JS / chime
+```
+
+## Manual commands
 
 ```bash
-npm uninstall cypress
+docker compose up -d
+docker compose run --rm wpcli plugin list
+docker compose run --rm wpcli eval-file /scripts/seed-menu.php
+docker compose down
 ```
 
-## Want to learn more?
+## Production notes
 
-Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).
+- Change all `.env` passwords before going live
+- Put WordPress behind HTTPS
+- Use a real payment gateway (Stripe, Square, etc.); Cash on Delivery is enabled for local testing
+- Keep the PrintNode client running on the kitchen PC
+- Restrict kitchen display access to shop managers only (already enforced)
+
+## Existing WordPress site?
+
+Copy `wp-content/plugins/restaurant-order-tickets` into your site’s plugins folder, activate it, install WooCommerce, then configure **WooCommerce → Kitchen Tickets**.

@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap");
+
+:root {
+  --rot-bg: #12140f;
+  --rot-panel: #1c2118;
+  --rot-ink: #f4efe4;
+  --rot-muted: #b7b09f;
+  --rot-accent: #d97706;
+  --rot-ok: #3d8b6e;
+  --rot-danger: #c2410c;
+  --rot-font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
+  --rot-font-body: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+.rot-kitchen-body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--rot-ink);
+  font-family: var(--rot-font-body);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(217, 119, 6, 0.18), transparent 40%),
+    radial-gradient(circle at 90% 20%, rgba(61, 139, 110, 0.14), transparent 35%),
+    linear-gradient(160deg, #0f120d 0%, #1a1f16 45%, #12140f 100%);
+}
+
+.rot-kitchen-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-end;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(244, 239, 228, 0.08);
+}
+
+.rot-eyebrow {
+  margin: 0 0 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--rot-muted);
+}
+
+.rot-kitchen-header h1 {
+  margin: 0;
+  font-family: var(--rot-font-display);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 700;
+}
+
+.rot-kitchen-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rot-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(244, 239, 228, 0.08);
+  font-size: 0.85rem;
+}
+
+.rot-pill.is-live {
+  background: rgba(61, 139, 110, 0.25);
+  color: #b7f0d6;
+}
+
+.rot-pill.is-error {
+  background: rgba(194, 65, 12, 0.25);
+  color: #ffd0b8;
+}
+
+.rot-toggle {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--rot-muted);
+  font-size: 0.9rem;
+}
+
+.rot-kitchen-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 2rem;
+}
+
+.rot-empty {
+  grid-column: 1 / -1;
+  color: var(--rot-muted);
+  font-size: 1.1rem;
+}
+
+.rot-ticket-card {
+  background: var(--rot-panel);
+  border: 1px solid rgba(244, 239, 228, 0.1);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  animation: rot-in 280ms ease-out;
+}
+
+.rot-ticket-card.is-new {
+  border-color: rgba(217, 119, 6, 0.7);
+  box-shadow: 0 0 0 1px rgba(217, 119, 6, 0.35), 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.rot-ticket-card h2 {
+  margin: 0 0 0.35rem;
+  font-family: var(--rot-font-display);
+  font-size: 1.4rem;
+}
+
+.rot-ticket-card .meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--rot-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.rot-ticket {
+  background: #fffaf1;
+  color: #1c1914;
+  border-radius: 8px;
+  padding: 0.85rem;
+  font-size: 0.92rem;
+}
+
+.rot-ticket__brand {
+  font-family: var(--rot-font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.rot-ticket__title {
+  font-weight: 700;
+  margin: 0.15rem 0 0.5rem;
+}
+
+.rot-ticket__meta div {
+  margin-bottom: 0.15rem;
+}
+
+.rot-ticket__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rot-ticket__items li {
+  margin-bottom: 0.45rem;
+}
+
+.rot-ticket__items .qty {
+  font-weight: 700;
+  margin-right: 0.35rem;
+}
+
+.rot-ticket__items .meta {
+  margin-left: 1.35rem;
+  color: #5b5346;
+  font-size: 0.85rem;
+}
+
+.rot-ticket__notes {
+  white-space: pre-wrap;
+}
+
+.rot-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.rot-actions button {
+  flex: 1;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rot-actions .print {
+  background: var(--rot-accent);
+  color: #1c1408;
+}
+
+.rot-actions .ack {
+  background: var(--rot-ok);
+  color: #061510;
+}
+
+@keyframes rot-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .rot-print-only,
+  .rot-print-only * {
+    visibility: visible;
+  }
+  .rot-print-only {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .rot-kitchen-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

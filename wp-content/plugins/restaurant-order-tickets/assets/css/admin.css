@@ -1,0 +1,43 @@
+.rot-settings-wrap .rot-settings-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.rot-settings-wrap .rot-card {
+  background: #fff;
+  border: 1px solid #dcdcde;
+  border-radius: 8px;
+  padding: 1rem 1.25rem 1.25rem;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.rot-settings-wrap .rot-help ol {
+  margin-left: 1.2rem;
+}
+
+.rot-settings-wrap code {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: #f6f7f7;
+  border-radius: 4px;
+}
+
+.rot-reprint-wrap {
+  margin-top: 1rem !important;
+}
+
+.rot-admin-order-meta {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: #f6f7f7;
+  border-left: 4px solid #2271b1;
+}
+
+@media (max-width: 960px) {
+  .rot-settings-wrap .rot-settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
