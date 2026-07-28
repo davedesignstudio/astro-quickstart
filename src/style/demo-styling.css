@@ -15,6 +15,11 @@ html {
     background: var(--color-bg);
     font-family: var(--main-family);
     min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 #background {
@@ -132,4 +137,48 @@ footer {
 
 footer img {
   width: 20px;
+}
+
+/* Scroll-triggered slide animations */
+.animate-on-scroll {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.slide-up {
+  transform: translateY(48px);
+}
+
+.animate-on-scroll.slide-down {
+  transform: translateY(-48px);
+}
+
+.animate-on-scroll.slide-left {
+  transform: translateX(64px);
+}
+
+.animate-on-scroll.slide-right {
+  transform: translateX(-64px);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.animate-on-scroll[data-delay="1"] { transition-delay: 0.1s; }
+.animate-on-scroll[data-delay="2"] { transition-delay: 0.2s; }
+.animate-on-scroll[data-delay="3"] { transition-delay: 0.3s; }
+.animate-on-scroll[data-delay="4"] { transition-delay: 0.4s; }
+.animate-on-scroll[data-delay="5"] { transition-delay: 0.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
