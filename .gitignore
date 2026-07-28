@@ -1,23 +1,21 @@
-# build output
-dist/
-.output/
-
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-
-# environment variables
+# WordPress / Docker
 .env
-.env.production
+wordpress/
+mysql-data/
+*.log
 
-# macOS-specific files
+# OS / editor
 .DS_Store
+.idea/
+.vscode/
+*.swp
+*~
 
-# Local Netlify folder
-.netlify
+# Node (if used for tooling)
+node_modules/
+dist/
+
+# Backups
+*.sql.gz
+*.sql
+!sample-data/*.sql

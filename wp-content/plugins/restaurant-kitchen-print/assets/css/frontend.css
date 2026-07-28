@@ -1,0 +1,27 @@
+.rkp-order-type-fields {
+  margin: 1.5rem 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(16, 36, 31, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(231, 244, 239, 0.95));
+}
+
+.rkp-order-type-fields h3 {
+  margin-top: 0;
+  font-family: "Fraunces", Georgia, serif;
+}
+
+.rkp-order-type .woocommerce-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
+.rkp-field-pickup,
+.rkp-field-dine_in {
+  display: none;
+}
+
+.rkp-order-type-fields[data-type="pickup"] .rkp-field-pickup,
+.rkp-order-type-fields[data-type="dine_in"] .rkp-field-dine_in {
+  display: block;
+}

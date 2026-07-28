@@ -1,0 +1,292 @@
+/*
+Theme Name: Restaurant Order
+Theme URI: https://github.com/davedesignstudio/astro-quickstart
+Author: Harbor Kitchen
+Description: Lean WooCommerce storefront theme for restaurant online ordering. Pairs with the Restaurant Kitchen Print plugin for automatic kitchen tickets.
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 8.0
+Text Domain: restaurant-order
+*/
+
+:root {
+  --ro-ink: #10241f;
+  --ro-paper: #eef6f2;
+  --ro-sand: #d7ebe2;
+  --ro-accent: #0f766e;
+  --ro-accent-deep: #0b5a54;
+  --ro-sage: #1f4d3d;
+  --ro-line: rgba(16, 36, 31, 0.12);
+  --ro-max: 1120px;
+  --ro-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --ro-body: "Source Sans 3", "Source Sans Pro", "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ro-body);
+  color: var(--ro-ink);
+  background:
+    radial-gradient(ellipse at 80% -10%, rgba(15, 118, 110, 0.18), transparent 42%),
+    radial-gradient(ellipse at 0% 20%, rgba(31, 77, 61, 0.12), transparent 40%),
+    linear-gradient(180deg, #f3faf7 0%, var(--ro-paper) 40%, #e2f0ea 100%);
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--ro-accent-deep);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--ro-ink);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ro-wrap {
+  width: min(100% - 2rem, var(--ro-max));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(10px);
+  background: rgba(238, 246, 242, 0.86);
+  border-bottom: 1px solid var(--ro-line);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+}
+
+.site-brand {
+  font-family: var(--ro-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--ro-ink);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--ro-ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+  color: var(--ro-accent);
+}
+
+.ro-cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--ro-line);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.site-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: min(72vh, 640px);
+  display: grid;
+  align-items: end;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(16, 36, 31, 0.2) 0%, rgba(16, 36, 31, 0.78) 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%230d2b26'/%3E%3Cstop offset='.55' stop-color='%2314473f'/%3E%3Cstop offset='1' stop-color='%230b1c28'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='url(%23g)'/%3E%3Cg fill-opacity='.16' fill='%23eef6f2'%3E%3Ccircle cx='220' cy='180' r='120'/%3E%3Ccircle cx='1280' cy='240' r='180'/%3E%3Ccircle cx='980' cy='680' r='220'/%3E%3C/g%3E%3C/svg%3E")
+      center / cover no-repeat;
+}
+
+.site-hero__content {
+  width: min(100% - 2rem, var(--ro-max));
+  margin: 0 auto;
+  padding: 4.5rem 0 3rem;
+  animation: roRise 700ms ease both;
+}
+
+.site-hero__brand {
+  font-family: var(--ro-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+}
+
+.site-hero__lead {
+  max-width: 28rem;
+  margin: 0 0 1.4rem;
+  font-size: 1.15rem;
+  opacity: 0.92;
+}
+
+.ro-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--ro-accent);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 700;
+  border: 0;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.ro-cta:hover {
+  background: var(--ro-accent-deep);
+  transform: translateY(-1px);
+}
+
+.site-main {
+  padding: 2.5rem 0 4rem;
+}
+
+.ro-section-title {
+  font-family: var(--ro-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.02em;
+}
+
+.ro-section-lead {
+  margin: 0 0 1.5rem;
+  max-width: 36rem;
+  opacity: 0.8;
+}
+
+.woocommerce ul.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.woocommerce ul.products::before,
+.woocommerce ul.products::after {
+  display: none !important;
+}
+
+.woocommerce ul.products li.product {
+  width: auto !important;
+  margin: 0 !important;
+  float: none !important;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  animation: roRise 650ms ease both;
+}
+
+.woocommerce ul.products li.product:nth-child(2) { animation-delay: 60ms; }
+.woocommerce ul.products li.product:nth-child(3) { animation-delay: 120ms; }
+.woocommerce ul.products li.product:nth-child(4) { animation-delay: 180ms; }
+.woocommerce ul.products li.product:nth-child(5) { animation-delay: 240ms; }
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  font-family: var(--ro-display);
+  font-size: 1.25rem;
+  padding: 0.55rem 0 0.15rem;
+}
+
+.woocommerce ul.products li.product .price {
+  color: var(--ro-ink);
+  font-weight: 700;
+}
+
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce #respond input#submit,
+.woocommerce input.button {
+  background: var(--ro-ink) !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  font-weight: 700 !important;
+  padding: 0.7rem 1rem !important;
+}
+
+.woocommerce a.button:hover,
+.woocommerce button.button:hover {
+  background: var(--ro-accent) !important;
+}
+
+.woocommerce span.onsale {
+  background: var(--ro-sage) !important;
+  border-radius: 0 !important;
+}
+
+.site-footer {
+  border-top: 1px solid var(--ro-line);
+  padding: 2rem 0 2.75rem;
+  margin-top: auto;
+}
+
+.site-footer__inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0.85;
+}
+
+.ro-notice {
+  width: min(100% - 2rem, var(--ro-max));
+  margin: 1rem auto 0;
+}
+
+@keyframes roRise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .site-hero {
+    min-height: 58vh;
+  }
+  .site-nav {
+    justify-content: flex-end;
+  }
+}

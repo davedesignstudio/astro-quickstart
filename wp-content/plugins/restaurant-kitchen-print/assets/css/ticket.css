@@ -1,0 +1,10 @@
+/* Shared ticket styles if embedded outside print template */
+.rkp-ticket-preview {
+  width: 80mm;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  background: #fff;
+  color: #000;
+  padding: 8px;
+  border: 1px dashed #999;
+}
