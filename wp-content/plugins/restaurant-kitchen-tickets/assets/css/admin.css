@@ -1,0 +1,36 @@
+.rkt-admin__intro {
+  max-width: 720px;
+  font-size: 14px;
+}
+
+.rkt-admin__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0 28px;
+}
+
+.rkt-admin__card {
+  background: #fff;
+  border: 1px solid #dcdcde;
+  border-radius: 8px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.rkt-admin__card h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.rkt-admin__card ol {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.rkt-admin__card code {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 6px 8px;
+  background: #f6f7f7;
+}

@@ -1,0 +1,133 @@
+.rkt-ticket-body {
+  margin: 0;
+  background: #fff;
+  color: #111;
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+}
+
+.rkt-ticket {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 8px 10px 16px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.rkt-ticket__header {
+  text-align: center;
+  border-bottom: 2px dashed #111;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.rkt-ticket__restaurant {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.rkt-ticket__title {
+  margin-top: 2px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.rkt-ticket__order {
+  margin-top: 8px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.rkt-ticket__when {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.rkt-ticket__meta {
+  border-bottom: 1px dashed #111;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.rkt-ticket__type {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.rkt-ticket__customer {
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+.rkt-ticket__item {
+  margin: 0 0 8px;
+}
+
+.rkt-ticket__item-line {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.rkt-ticket__qty {
+  font-weight: 700;
+  min-width: 2ch;
+}
+
+.rkt-ticket__name {
+  flex: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.rkt-ticket__price {
+  white-space: nowrap;
+}
+
+.rkt-ticket__item-meta {
+  margin: 2px 0 0 1.6em;
+  padding: 0;
+  list-style: disc;
+  font-size: 12px;
+}
+
+.rkt-ticket__notes,
+.rkt-ticket__shipping {
+  border-top: 1px dashed #111;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+.rkt-ticket__notes p,
+.rkt-ticket__shipping div {
+  margin: 4px 0 0;
+}
+
+.rkt-ticket__footer {
+  border-top: 2px dashed #111;
+  margin-top: 10px;
+  padding-top: 8px;
+  text-align: center;
+}
+
+.rkt-ticket__total {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  .rkt-ticket-body {
+    margin: 0;
+  }
+
+  .rkt-ticket {
+    width: 100% !important;
+  }
+}
