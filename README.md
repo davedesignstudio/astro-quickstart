@@ -1,182 +1,217 @@
-[![Netlify + Astro](https://user-images.githubusercontent.com/43764894/223559085-8ff69d2f-4247-427f-a3a6-d2036b00082a.png)](https://ntl.fyi/3LZGn73)
+# Restaurant Online Ordering System
 
-# Astro Quickstart Template   
+A complete WordPress + WooCommerce restaurant ordering system with **automatic kitchen ticket printing** the moment an order is placed.
 
-This is a bare-bones Astro project that has everything you need to quickly deploy it to [Netlify](https://netlify.com). 
+## Features
 
-Hate reading, here's a video: https://youtu.be/SknFflQVOys!
+- **Online ordering** — WooCommerce-powered menu, cart, and checkout
+- **Auto-print tickets** — Kitchen tickets print automatically on new orders
+- **ESC/POS support** — Works with thermal receipt printers (Epson, Star, etc.)
+- **Two print methods:**
+  - **Local Print Daemon** — Polls WordPress and prints to a network/USB printer (recommended)
+  - **PrintNode** — Cloud printing for remote/multi-location setups
+- **Mobile-friendly theme** — Clean restaurant theme optimized for phone ordering
+- **Docker setup** — One-command local development environment
 
-Love reading, here's blog post: www.netlify.app/blog/deploy-your-astro-project-fast/!
+## Quick Start
 
-## Table of Contents:
+### Prerequisites
 
-- [Quick Setup + Deploy Option](#quick-setup--deploy-option)
-- [Regular Setup](#regular-setup)
-  - [Cloning + Install Packages](#1-cloning--install-packages)
-  - [Deploying](#2-deploying)
-- [Astro + Netlify Resources](#astro--netlify-resources)
-- [Project Structure](#project-structure)
-- [Styling](#styling)
-  - [Notes on Styling](#notes-on-styling)
-  - [Remove Styling](#remove-styling)
-- [Commands](#commands)
-- [Testing](#testing)
-  - [Included Default Testing](#included-default-testing)
-  - [Removing Renovate](#removing-renovate)
-  - [Removing Cypress](#removing-cypress)
-- [Want to learn more?](#want-to-learn-more)
+- [Docker](https://docs.docker.com/get-docker/) and Docker Compose
+- Node.js 18+ (for the print daemon)
 
-## Quick Setup + Deploy Option
+### 1. Start WordPress
 
-Click this button and it will help you create a new repo, create a new Netlify project, and deploy!
+```bash
+docker compose up -d
+```
 
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-quickstart)
+Wait ~60 seconds for WordPress, WooCommerce, and sample menu items to install.
 
-## Regular Setup
+| Resource | URL |
+|----------|-----|
+| Storefront | http://localhost:8080 |
+| Menu/Shop | http://localhost:8080/shop |
+| Admin | http://localhost:8080/wp-admin |
+| Login | `admin` / `admin123` |
 
- ### 1. Cloning + Install Packages
+### 2. Start the Print Daemon
 
-  - Clone this repo with one of these options:
+On a computer connected to your kitchen printer:
 
-    - Click the 'Use this template' button at the top of the page
-    - Or via the command line `git clone https://github.com/netlify-templates/astro-quickstart`
+```bash
+cd print-daemon
+npm install
+cp .env.example .env
+```
 
-  - Then install the necessary packages and run the project locally to make sure everything works.
+Edit `.env` with your API key (found in **WooCommerce → Kitchen Print** in wp-admin):
 
-    ```bash
-    npm install
-    npm run dev
-    ```
+```bash
+ROP_API_URL=http://localhost:8080
+ROP_API_KEY=your-daemon-api-key
+ROP_PRINTER=network://192.168.1.100:9100
+```
 
-  > Alternatively, you can run this locally with [the Netlify CLI](https://docs.netlify.com/cli/get-started/)'s by running the `netlify dev` command for more options like receiving a live preview to share (`netlify dev --live`) and the ability to test [Netlify Functions](https://www.netlify.com/products/functions) and [redirects](https://docs.netlify.com/routing/redirects/). 
+Start the daemon:
 
-  ### 2. Deploying
-  - Install the Netlify CLI globally `npm install netlify-cli -g`
-    
-  - Run `npm run build`
+```bash
+npm start
+```
 
-  - Then use the `netlify deploy` for a deploy preview link or `netlify deploy --prod` to deploy to production
+### 3. Place a Test Order
 
-  Here are a few other ways you can deploy this template:
-    
-  - Use the Netlify CLI's create from template command `netlify sites:create-template astro-quickstart` which will create a repo, Netlify project, and deploy it
-    
-  - If you want to utilize continuous deployment through GitHub webhooks, run the Netlify command `netlify init` to create a new project based on your repo or `netlify link` to connect your repo to an existing project
+1. Go to http://localhost:8080/shop
+2. Add items to cart and checkout
+3. The kitchen ticket prints automatically within seconds
 
-## Astro + Netlify Resources
+For testing without a physical printer, use file output:
 
-Here are some resources to help you on your Astro + Netlify coding fun!
+```bash
+ROP_PRINTER=file:///tmp/kitchen-tickets.txt npm start
+```
 
-- [Astro on Netlify Integration Page](https://docs.netlify.com/integrations/frameworks/astro)
+Then watch tickets appear:
 
-- [Build wicked fast sites with Astro: An Introduction](https://www.netlify.com/blog/2021/07/08/build-wicked-fast-sites-with-astro-an-introduction/#main)
+```bash
+tail -f /tmp/kitchen-tickets.txt
+```
 
-- [A Template for Building Shopify Stores with Astro and the Storefront API](https://www.netlify.com/blog/2021/07/23/build-a-modern-shopping-site-with-astro-and-serverless-functions)
+## Architecture
 
-Hope this template helps :) Happy coding 👩🏻‍💻!
+```
+Customer places order
+        │
+        ▼
+┌─────────────────┐
+│   WooCommerce   │  checkout completes
+│   WordPress     │
+└────────┬────────┘
+         │ woocommerce_checkout_order_processed
+         ▼
+┌─────────────────┐
+│ Restaurant Order│  formats ESC/POS ticket
+│ Print Plugin    │  queues print job in DB
+└────────┬────────┘
+         │
+    ┌────┴────┐
+    ▼         ▼
+ PrintNode   Print Daemon (polls REST API every 3s)
+ (cloud)         │
+                  ▼
+            Kitchen Printer
+            (ESC/POS thermal)
+```
 
----
+## Print Methods
+
+### Local Print Daemon (Recommended)
+
+Best for a single restaurant with a printer on the local network.
+
+1. Install the daemon on any computer on the same network as the printer
+2. Set **Print Method** to "Local Print Daemon" in wp-admin
+3. Copy the **Daemon API Key** into your `.env` file
+4. Point `ROP_PRINTER` at your printer:
+   - Network: `network://192.168.1.100:9100`
+   - File (testing): `file:///tmp/kitchen-tickets.txt`
+
+The daemon polls `GET /wp-json/restaurant-print/v1/queue` and prints pending jobs immediately.
+
+### PrintNode (Cloud)
+
+Best for cloud-hosted WordPress or multiple locations.
+
+1. Create an account at [printnode.com](https://www.printnode.com)
+2. Install the PrintNode client on the restaurant computer
+3. In wp-admin (**WooCommerce → Kitchen Print**):
+   - Set **Print Method** to "PrintNode Cloud Printing"
+   - Enter your API key and printer ID
+
+Tickets print instantly via PrintNode's API — no daemon needed.
+
+## Configuration
+
+All settings are in **WooCommerce → Kitchen Print**:
+
+| Setting | Description |
+|---------|-------------|
+| Restaurant Name | Shown at top of kitchen tickets |
+| Auto-Print Orders | Enable/disable automatic printing |
+| Print On Statuses | Which order statuses trigger printing |
+| Print Method | Daemon or PrintNode |
+| Daemon API Key | Shared secret for the print daemon |
+
+## Kitchen Ticket Format
+
+Each ticket includes:
+
+- Restaurant name and order number
+- Date/time and order type (Pickup/Delivery)
+- Customer name, phone, and address
+- All items with quantities, modifiers, and prices
+- Order notes and special instructions
+- Subtotal, shipping, tax, and total
+- Payment method
+
+## REST API
+
+The plugin exposes these endpoints (authenticated with `X-ROP-API-Key` header):
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/wp-json/restaurant-print/v1/queue` | Get pending print jobs |
+| POST | `/wp-json/restaurant-print/v1/queue/{id}/complete` | Mark job as printed |
+| POST | `/wp-json/restaurant-print/v1/queue/{id}/fail` | Mark job as failed |
+| GET | `/wp-json/restaurant-print/v1/test` | Health check |
 
 ## Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
 ```
-/
-├── public/
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   └── Layout.astro
-│   ├── pages/
-│   │   └── index.astro
-│   └── style/
-│       └── demo-styling.css
-└── package.json
+├── docker-compose.yml          # WordPress + MySQL stack
+├── scripts/wp-init.sh          # Auto-installs WP, WooCommerce, sample menu
+├── wordpress/
+│   └── wp-content/
+│       ├── plugins/restaurant-order-print/   # Auto-print plugin
+│       └── themes/restaurant-ordering/       # Restaurant theme
+└── print-daemon/               # Local print client (Node.js)
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Production Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components or layouts.
+For a live restaurant:
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. Deploy WordPress to a hosting provider (WP Engine, DigitalOcean, etc.)
+2. Install WooCommerce and activate the Restaurant Order Print plugin
+3. Configure payment gateway (Stripe, Square, etc.)
+4. Set up delivery/pickup shipping methods
+5. Run the print daemon on a dedicated mini-PC or Raspberry Pi at the restaurant
+6. Connect an ESC/POS thermal printer via Ethernet (port 9100)
 
-## Styling
+### Recommended Printers
 
-We've added some modern styling to this template using css within an external stylesheet, this will allow you to easily remove our styling and add in your own. 
+- Epson TM-T88VI (Ethernet)
+- Star TSP143IIIU (USB, use with Raspberry Pi)
+- Any ESC/POS-compatible thermal printer with network port
 
-If you decide that you want to keep our styling you can review our style notes below. 
+## Troubleshooting
 
-### Notes on Styling
+**Tickets not printing?**
+- Check **WooCommerce → Kitchen Print** for failed jobs and error messages
+- Verify the print daemon is running: `npm start` in `print-daemon/`
+- Test API connection: `npm run test-print`
+- Confirm API key matches between `.env` and wp-admin
 
-The variables below give you the ability to change the gradient colors of the blobs and are interpolated into the URL string of the background-img within the body. 
+**Printer not reachable?**
+- Ping the printer IP from the daemon machine
+- Verify port 9100 is open (default for ESC/POS network printers)
+- Try file output mode first to confirm the queue is working
 
-```css
-// Controls the blob blur gradient colors within the main tag's svg
---top-right-blur-1: #20C6B7;
---top-right-blur-2: #4D9ABF;
---bttm-left-blur-1: #FF5C02;
---bttm-left-blur-2: #FFCDB1;
-```
+**Orders not triggering prints?**
+- Ensure "Auto-Print Orders" is enabled
+- Check that the order status matches "Print On Statuses" settings
+- Cash-on-delivery orders start as "Pending" — this is included by default
 
-### Remove Styling
+## License
 
-If you decide that our styling is not for you, all you'll need to do is remove the [demo-styling.css](https://github.com/netlify-templates/astro-quickstart/tree/main/src/style/demo-styling.css) file. 
-
-
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3000`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
-
-## Testing
-
-### Included Default Testing
-
-We’ve included some tooling that helps us maintain these templates. This template currently uses:
-
-- [Renovate](https://www.mend.io/free-developer-tools/renovate/) - to regularly update our dependencies
-- [Cypress](https://www.cypress.io/) - to run tests against how the template runs in the browser
-- [Cypress Netlify Build Plugin](https://github.com/cypress-io/netlify-plugin-cypress) - to run our tests during our build process
-
-If your team is not interested in this tooling, you can remove them with ease!
-
-### Removing Renovate
-
-In order to keep our project up-to-date with dependencies we use a tool called [Renovate](https://github.com/marketplace/renovate). If you’re not interested in this tooling, delete the `renovate.json` file and commit that onto your main branch.
-
-### Removing Cypress
-
-For our testing, we use [Cypress](https://www.cypress.io/) for end-to-end testing. This makes sure that we can validate that our templates are rendering and displaying as we’d expect. By default, we have Cypress not generate deploy links if our tests don’t pass. If you’d like to keep Cypress and still generate the deploy links, go into your `netlify.toml` and delete the plugin configuration lines:
-
-```diff
-[[plugins]]
-  package = "netlify-plugin-cypress"
--  [plugins.inputs.postBuild]
--    enable = true
--
--  [plugins.inputs]
--    enable = false 
-```
-
-If you’d like to remove the `netlify-plugin-cypress` build plugin entirely, you’d need to delete the entire block above instead. And then make sure sure to remove the package from the dependencies using:
-
-```bash
-npm uninstall -D netlify-plugin-cypress
-```
-
-And lastly if you’d like to remove Cypress entirely, delete the entire `cypress` folder and the `cypress.config.ts` file. Then remove the dependency using:
-
-```bash
-npm uninstall cypress
-```
-
-## Want to learn more?
-
-Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).
+MIT

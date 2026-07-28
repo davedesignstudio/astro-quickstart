@@ -1,0 +1,33 @@
+.rop-admin .rop-code {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.rop-status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.rop-status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.rop-status-printed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.rop-status-failed {
+    background: #f8d7da;
+    color: #721c24;
+}

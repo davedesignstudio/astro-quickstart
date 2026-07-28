@@ -21,3 +21,9 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Print daemon
+print-daemon/node_modules/
+
+# Docker volumes (if mounted locally)
+.docker/

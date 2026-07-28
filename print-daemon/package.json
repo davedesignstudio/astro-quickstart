@@ -1,0 +1,16 @@
+{
+  "name": "restaurant-print-daemon",
+  "version": "1.0.0",
+  "description": "Local print daemon that polls WordPress for kitchen tickets and sends them to ESC/POS printers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test-print": "node index.js --test"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
