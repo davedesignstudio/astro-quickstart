@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+	--rkt-bg: #1a1510;
+	--rkt-panel: #241c14;
+	--rkt-ink: #f4ebe0;
+	--rkt-muted: #c4b5a3;
+	--rkt-accent: #e07a3d;
+	--rkt-live: #3ecf8e;
+	--rkt-danger: #ef5b5b;
+	--rkt-line: rgba(244, 235, 224, 0.12);
+	--rkt-font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+	--rkt-font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body.rkt-kitchen-body {
+	margin: 0;
+	min-height: 100vh;
+	background:
+		radial-gradient(ellipse at top left, rgba(224, 122, 61, 0.18), transparent 42%),
+		linear-gradient(160deg, #120e0a 0%, #1a1510 45%, #24180f 100%);
+	color: var(--rkt-ink);
+	font-family: var(--rkt-font-body);
+}
+
+.rkt-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 1rem;
+	padding: 1.25rem 1.5rem 1rem;
+	border-bottom: 1px solid var(--rkt-line);
+}
+
+.rkt-eyebrow {
+	margin: 0 0 0.25rem;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: 0.75rem;
+	color: var(--rkt-accent);
+	font-weight: 600;
+}
+
+.rkt-header h1 {
+	margin: 0;
+	font-family: var(--rkt-font-display);
+	font-size: clamp(1.6rem, 3vw, 2.4rem);
+	line-height: 1.1;
+}
+
+.rkt-status {
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+}
+
+.rkt-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.35rem 0.7rem;
+	border: 1px solid var(--rkt-line);
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 600;
+}
+
+.rkt-pill-live::before {
+	content: "";
+	width: 0.55rem;
+	height: 0.55rem;
+	border-radius: 50%;
+	background: var(--rkt-live);
+	box-shadow: 0 0 0 0 rgba(62, 207, 142, 0.7);
+	animation: rkt-pulse 1.6s infinite;
+}
+
+.rkt-pill-offline {
+	color: var(--rkt-danger);
+}
+
+.rkt-clock {
+	font-variant-numeric: tabular-nums;
+	color: var(--rkt-muted);
+}
+
+.rkt-layout {
+	display: grid;
+	grid-template-columns: 1.1fr 0.9fr;
+	gap: 1rem;
+	padding: 1rem 1.5rem 2rem;
+}
+
+@media (max-width: 900px) {
+	.rkt-layout { grid-template-columns: 1fr; }
+	.rkt-header { flex-direction: column; align-items: flex-start; }
+}
+
+.rkt-panel {
+	background: color-mix(in srgb, var(--rkt-panel) 92%, black);
+	border: 1px solid var(--rkt-line);
+	border-radius: 18px;
+	padding: 1rem;
+	min-height: 420px;
+}
+
+.rkt-panel-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.rkt-panel-head h2 {
+	margin: 0;
+	font-family: var(--rkt-font-display);
+	font-size: 1.35rem;
+}
+
+.rkt-panel-head p {
+	margin: 0.3rem 0 0;
+	color: var(--rkt-muted);
+	font-size: 0.92rem;
+}
+
+.rkt-btn {
+	appearance: none;
+	border: 1px solid var(--rkt-line);
+	background: transparent;
+	color: var(--rkt-ink);
+	border-radius: 999px;
+	padding: 0.45rem 0.9rem;
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.rkt-btn:hover { border-color: var(--rkt-accent); color: var(--rkt-accent); }
+
+.rkt-empty {
+	color: var(--rkt-muted);
+	padding: 2rem 0.5rem;
+	text-align: center;
+}
+
+.rkt-card {
+	border: 1px solid var(--rkt-line);
+	border-radius: 14px;
+	padding: 0.9rem 1rem;
+	margin-bottom: 0.75rem;
+	background: rgba(255, 255, 255, 0.02);
+	animation: rkt-slide 0.35s ease;
+}
+
+.rkt-card.printing { border-color: var(--rkt-accent); }
+.rkt-card.done { opacity: 0.55; }
+
+.rkt-card-top {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.75rem;
+	align-items: baseline;
+}
+
+.rkt-order-no {
+	font-family: var(--rkt-font-display);
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.rkt-badge {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--rkt-accent);
+}
+
+.rkt-meta {
+	margin-top: 0.35rem;
+	color: var(--rkt-muted);
+	font-size: 0.9rem;
+}
+
+.rkt-recent .rkt-card { cursor: pointer; }
+.rkt-recent .rkt-card:hover { border-color: rgba(224, 122, 61, 0.55); }
+
+@keyframes rkt-pulse {
+	0% { box-shadow: 0 0 0 0 rgba(62, 207, 142, 0.65); }
+	70% { box-shadow: 0 0 0 10px rgba(62, 207, 142, 0); }
+	100% { box-shadow: 0 0 0 0 rgba(62, 207, 142, 0); }
+}
+
+@keyframes rkt-slide {
+	from { opacity: 0; transform: translateY(8px); }
+	to { opacity: 1; transform: translateY(0); }
+}

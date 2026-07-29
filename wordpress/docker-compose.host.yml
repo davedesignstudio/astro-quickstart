@@ -1,0 +1,14 @@
+# Optional host-network compose for sandboxes where Docker bridge networking is restricted.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.host.yml up -d
+services:
+  db:
+    network_mode: host
+    command: ["mysqld", "--bind-address=127.0.0.1", "--port=3307"]
+  wordpress:
+    network_mode: host
+    environment:
+      WORDPRESS_DB_HOST: 127.0.0.1:3307
+  wpcli:
+    network_mode: host
+    environment:
+      WORDPRESS_DB_HOST: 127.0.0.1:3307
