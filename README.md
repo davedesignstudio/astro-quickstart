@@ -39,6 +39,13 @@ chmod +x scripts/setup.sh
 ./scripts/setup.sh
 ```
 
+If Docker bridge networking fails in your environment:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.host.yml up -d
+./scripts/setup.sh
+```
+
 Then open:
 
 - **Storefront:** http://localhost:8080
