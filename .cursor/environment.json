@@ -1,0 +1,17 @@
+{
+  "name": "D. Philhower Studio",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "astro-dev",
+      "command": "npm run dev -- --host --port 3000",
+      "description": "Astro dev server for the D. Philhower Studio site, served on http://localhost:3000 (matches the Cypress baseUrl)."
+    }
+  ],
+  "ports": [
+    {
+      "name": "astro-dev",
+      "port": 3000
+    }
+  ]
+}
