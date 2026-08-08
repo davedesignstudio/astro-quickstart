@@ -1,51 +1,92 @@
 ---
-import '../style/demo-styling.css'
+import '../style/global.css';
 
 export interface Props {
-	title: string;
+  title: string;
+  description?: string;
+  path?: string;
 }
 
-const { title } = Astro.props as Props;
+const {
+  title,
+  description = 'D. Philhower Studio crafts custom brand systems and websites with clarity, weight, and lasting presence.',
+  path = Astro.url.pathname,
+} = Astro.props as Props;
+
+const fullTitle = title.includes('Philhower') ? title : `${title} · D. Philhower Studio`;
+const nav = [
+  { href: '/work', label: 'Work' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact', cta: true },
+];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<title>{title}</title>
-</head>
-<body>
-	<slot />
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#12141a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="logo" href="/">
+        D. Philhower
+        <span>Studio</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class={item.cta ? 'nav-cta' : undefined}
+              aria-current={path === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+    <main id="main" class="site-main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>© {new Date().getFullYear()} D. Philhower Studio</p>
+      <div class="footer-links">
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="mailto:hello@dphilhowerstudio.com">hello@dphilhowerstudio.com</a>
+      </div>
+    </footer>
+    <script>
+      const reveals = document.querySelectorAll('.reveal');
+      if (reveals.length && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.16, rootMargin: '0px 0px -8% 0px' }
+        );
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
 </html>
-
-<style>
-  :root {
-    --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem); 
-    --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-    --color-text: hsl(12, 5%, 4%);
-    --color-bg: hsl(10, 21%, 95%);
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    font-size: var(--font-size-base);
-    color: var(--color-text);
-    background-color: var(--color-bg);
-  }
-  body {
-    margin: 0;
-  }
-  :global(h1) {
-    font-size: var(--font-size-xl);
-  }
-  :global(h2) {
-    font-size: var(--font-size-lg);
-  }
-  :global(code) {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-  }
-</style>

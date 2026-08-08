@@ -1,37 +1,173 @@
 ---
 import Layout from '../components/Layout.astro';
+
+const projects = [
+  {
+    title: 'Northline Provisions',
+    meta: 'Brand system · Packaging',
+    image:
+      'https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Bold brand identity materials laid out on a dark surface',
+  },
+  {
+    title: 'Harbor & Co.',
+    meta: 'Website · Visual identity',
+    image:
+      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Abstract colorful design composition suggesting digital brand work',
+  },
+  {
+    title: 'Field Theory',
+    meta: 'Brand refresh · Digital',
+    image:
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Designer workspace with color swatches and typography tools',
+  },
+];
+
+const services = [
+  {
+    title: 'Custom brand creation',
+    body: 'Naming support, logo systems, type, color, and guidelines that hold up across print, packaging, and screens.',
+  },
+  {
+    title: 'Website design',
+    body: 'Clear structure, expressive visuals, and interfaces that make your brand feel intentional from the first scroll.',
+  },
+  {
+    title: 'Brand + web systems',
+    body: 'One cohesive language across identity and site — so every touchpoint feels like the same studio made it.',
+  },
+];
 ---
 
-<Layout title="Astro Quickstart">
-	<main>
-    <svg id="background" width='1728' height='1235' viewBox="0 0 1728 1235" fill='none' xmlns='http://www.w3.org/2000/svg'><g opacity='0.75' filter='url(#filter0_f_39_143)'><circle cy='1000' r='264' fill='url(#paint0_linear_39_143)'/></g><g opacity='0.65' filter='url(#filter1_f_39_143)'><circle cx='1720' cy='264' r='379' fill='url(#paint1_linear_39_143)'/></g><defs><filter id='filter0_f_39_143' x='-485' y='515' width='970' height='970' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur stdDeviation='110.5' result='effect1_foregroundBlur_39_143'/></filter><filter id='filter1_f_39_143' x='1120' y='-336' width='1200' height='1200' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feGaussianBlur stdDeviation='110.5' result='effect1_foregroundBlur_39_143'/></filter><linearGradient id='paint0_linear_39_143' x1='196.5' y1='902' x2='-2.55853e-05' y2='1264' gradientUnits='userSpaceOnUse'><stop stop-color="var(--bttm-left-blur-1)"/><stop offset='1' stop-color="var(--bttm-left-blur-2)"/></linearGradient><linearGradient id='paint1_linear_39_143' x1='1720' y1='-115' x2='1720' y2='643' gradientUnits='userSpaceOnUse'><stop stop-color="var(--top-right-blur-1)"/><stop offset='1' stop-color="var(--top-right-blur-2)" /></linearGradient></defs></svg>     
-    <div id="content">
-      <div class="header">
-        <h1>Quickstart Template</h1>
-        <div class="logo">
-          <img src="https://user-images.githubusercontent.com/43764894/223559085-8ff69d2f-4247-427f-a3a6-d2036b00082a.png" alt="Netlify plus Astro banner">
-        </div>
-        <h2>
-          This is a bare-bones Astro project that has everything you need to quickly deploy it to Netlify
-        </h2>
-        <div class="bttns">
-          <a href="https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-quickstart" class="bttn primary">Deploy to Netlify</a>
-          <a href="https://github.com/netlify-templates/astro-quickstart" class="bttn secondary">View Repo</a>
-        </div>
-      </div>
-			<div class="resource-list">
-        <ul>
-          <li>
-            <a href="https://ntl.fyi/38O9wmY">Netlify Blog: Astro posts</a>
-					</li>
-          <li>
-            <a href="https://ntl.fyi/3KHGtyz">Netlify Docs</a>
-          </li>
-          <li>
-            <a href="https://docs.astro.build/en/getting-started/">Astro Docs</a>
-          </li>
-        </ul>
+<Layout
+  title="D. Philhower Studio"
+  description="Graphic design studio specializing in custom brand creation and website design."
+  path="/"
+>
+  <section class="hero" aria-label="Studio introduction">
+    <div class="hero-media">
+      <img
+        src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=2000&q=80"
+        alt="Design studio desk with sketches, color chips, and a laptop open to layout work"
+        width="2000"
+        height="1333"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-content">
+      <h1 class="brand-mark">D. Philhower <em>Studio</em></h1>
+      <p class="hero-headline">Brands with weight. Sites with presence.</p>
+      <p class="hero-support">
+        Custom brand systems and websites for businesses ready to look like they mean it.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/contact">Start a project</a>
+        <a class="btn btn-ghost" href="/work">View selected work</a>
       </div>
     </div>
-	</main>
+  </section>
+
+  <section class="section services reveal" aria-labelledby="services-title">
+    <p class="section-label">What we do</p>
+    <h2 class="section-title" id="services-title">Design that carries your name further.</h2>
+    <p class="section-lead">
+      We specialize in custom brand creation and website design — the two surfaces people meet you first.
+    </p>
+    <ol class="service-list">
+      {
+        services.map((service, i) => (
+          <li class="service-item">
+            <span class="service-index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{service.title}</h3>
+            <p>{service.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="section reveal" aria-labelledby="work-title">
+    <div class="section-head">
+      <p class="section-label">Selected work</p>
+      <h2 class="section-title" id="work-title">Recent brand & web engagements.</h2>
+      <p class="section-lead">A sample of identity and digital work shaped for clarity at every scale.</p>
+    </div>
+    <div class="work-grid">
+      {
+        projects.map((project) => (
+          <a class="work-item" href="/work">
+            <div class="work-thumb">
+              <img src={project.image} alt={project.alt} width="1200" height="900" loading="lazy" />
+            </div>
+            <div class="work-meta">
+              <h3>{project.title}</h3>
+              <p>{project.meta}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="process-title">
+    <p class="section-label">How we work</p>
+    <h2 class="section-title" id="process-title">A focused path from brief to launch.</h2>
+    <p class="section-lead">Fewer meetings. Clear milestones. Work that stays sharp after handoff.</p>
+    <div class="process-steps">
+      <article class="process-step">
+        <h3>Discover</h3>
+        <p>We learn your audience, constraints, and competitive space — then define the problem worth solving.</p>
+      </article>
+      <article class="process-step">
+        <h3>Design</h3>
+        <p>Brand directions and site systems are explored with intent, then refined into a single coherent language.</p>
+      </article>
+      <article class="process-step">
+        <h3>Deliver</h3>
+        <p>Guidelines, assets, and a production-ready website — documented so your team can keep building.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="about-title">
+    <div class="about-band">
+      <div class="about-visual">
+        <img
+          src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=1400&q=80"
+          alt="Close view of design tools and typed proofs on a studio table"
+          width="1400"
+          height="1000"
+          loading="lazy"
+        />
+      </div>
+      <div class="about-copy">
+        <p class="section-label">The studio</p>
+        <h2 class="section-title" id="about-title">Independent. Detail-obsessed. Built for lasting marks.</h2>
+        <p>
+          D. Philhower Studio is a graphic design practice focused on brand creation and website design —
+          helping founders and teams show up with confidence.
+        </p>
+        <p>
+          Every engagement starts with craft: typography that holds, color with purpose, and interfaces that
+          feel inevitable once you see them.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-ink" href="/about">About the studio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-strip reveal" aria-labelledby="cta-title">
+    <div class="contact-strip-inner">
+      <h2 id="cta-title">Ready for a brand people remember?</h2>
+      <p>Tell us where you are and where you want to go. We’ll reply within two business days.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/contact">Start a project</a>
+        <a class="btn btn-ghost" href="mailto:hello@dphilhowerstudio.com">Email the studio</a>
+      </div>
+    </div>
+  </section>
 </Layout>

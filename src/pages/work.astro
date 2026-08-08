@@ -1,0 +1,95 @@
+---
+import Layout from '../components/Layout.astro';
+
+const projects = [
+  {
+    title: 'Northline Provisions',
+    meta: 'Brand system · Packaging · Guidelines',
+    summary: 'A full identity system for a specialty foods maker — from mark and type to shelf-ready packaging.',
+    image:
+      'https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Bold brand identity materials laid out on a dark surface',
+  },
+  {
+    title: 'Harbor & Co.',
+    meta: 'Website · Visual identity',
+    summary: 'A calm, confident web presence paired with a flexible mark for a coastal consulting firm.',
+    image:
+      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Abstract colorful design composition suggesting digital brand work',
+  },
+  {
+    title: 'Field Theory',
+    meta: 'Brand refresh · Digital system',
+    summary: 'A sharper visual language and modular site design for a research-minded product studio.',
+    image:
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Designer workspace with color swatches and typography tools',
+  },
+  {
+    title: 'Cedar Room',
+    meta: 'Brand creation · Website',
+    summary: 'Warm, precise branding and a conversion-focused site for an interiors practice.',
+    image:
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Sunlit interior space with architectural detail and soft materials',
+  },
+  {
+    title: 'Signal Press',
+    meta: 'Identity · Editorial web',
+    summary: 'Typography-led identity and a reading-first website for an independent publisher.',
+    image:
+      'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Open notebook and pen on a desk suggesting editorial craft',
+  },
+  {
+    title: 'Aperture Labs',
+    meta: 'Product brand · Marketing site',
+    summary: 'A crisp product brand and marketing site built to explain complex tools simply.',
+    image:
+      'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1400&q=80',
+    alt: 'Abstract geometric shapes in soft light suggesting product branding',
+  },
+];
+---
+
+<Layout
+  title="Work"
+  description="Selected brand systems and website design from D. Philhower Studio."
+  path="/work"
+>
+  <header class="page-hero dark">
+    <div class="inner">
+      <p class="brand-line">D. Philhower Studio</p>
+      <h1>Selected work</h1>
+      <p>Brand systems and websites shaped for clarity, recognition, and lasting use.</p>
+    </div>
+  </header>
+
+  <section class="section work-page-grid" aria-label="Project list">
+    {
+      projects.map((project) => (
+        <article class="work-item reveal">
+          <div class="work-thumb">
+            <img src={project.image} alt={project.alt} width="1400" height="1120" loading="lazy" />
+          </div>
+          <div class="work-meta">
+            <h2>{project.title}</h2>
+            <p>{project.meta}</p>
+          </div>
+          <p style="margin-top: 0.65rem; color: var(--ink-soft); max-width: 42ch;">{project.summary}</p>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="contact-strip reveal" aria-labelledby="work-cta">
+    <div class="contact-strip-inner">
+      <h2 id="work-cta">Have a project in mind?</h2>
+      <p>Whether you need a new brand, a website, or both — let’s talk scope and timeline.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/contact">Start a project</a>
+      </div>
+    </div>
+  </section>
+</Layout>
