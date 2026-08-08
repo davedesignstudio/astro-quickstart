@@ -25,5 +25,8 @@ describe('D. Philhower Studio site', () => {
     cy.contains('a', 'See the influences').click()
     cy.location('pathname').should('eq', '/influences')
     cy.get('h1').contains('Research behind the studio language')
+    cy.contains('Swedish graphic designers')
+    cy.contains('Principles for family corporate identity')
   })
 })
+

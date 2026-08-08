@@ -1,70 +1,163 @@
 ---
 import Layout from '../components/Layout.astro';
 
-const swedish = [
+const swedishDesigners = [
+  {
+    name: 'Anders Beckman',
+    note: 'Pioneer of Swedish advertising art; founded Beckmans College of Design (1939). Complete identity for the Helsingborg H55 exhibition; World’s Fair presence that put Swedish functional design on a global stage.',
+  },
+  {
+    name: 'Karl-Erik Forsberg',
+    note: 'Calligrapher and type designer of Berling Antikva. Marks and identities for Volvo, Swedish Radio, the Royal Library, Stockholm University, and Stockholm’s civic arms — letterforms as national infrastructure.',
+  },
   {
     name: 'Olle Eksell',
-    note: 'Designer of Sweden’s first modern design program for Mazetti (Ögon Cacao). Author of Design = Economy. Friend of Paul Rand; later recognized by Japan’s IDEA magazine and published in a Japanese monograph.',
+    note: 'Sweden’s first modern design program for Mazetti (Ögon Cacao, 1956). Author of Design = Economy. Friend of Paul Rand; later celebrated in Japan’s IDEA magazine with a Japanese monograph.',
   },
   {
     name: 'Rune Söderqvist',
-    note: 'Creator of the ABBA logotype — a national mark that proved Swedish graphic wit could scale into global culture.',
+    note: 'ABBA logotype (the mirrored B) — Swedish graphic wit scaled into one of the world’s most recognized entertainment marks.',
+  },
+  {
+    name: 'Bo Berndal',
+    note: 'Type designer of 300+ faces; first Berling Prize recipient. Esseltub for Stockholm’s subway wayfinding — Swedish systems design in public space.',
   },
   {
     name: 'Clara von Zweigbergk',
-    note: 'Stockholm practice defined by color, paper, and balance. Shaped HAY’s visual identity, including HAY Tokyo — a direct Sweden–Japan bridge.',
+    note: 'Color, paper, and balance. Formed HAY’s visual identity and HAY Tokyo — a living Sweden–Japan bridge in contemporary brand craft.',
+  },
+];
+
+const swedishStudios = [
+  {
+    name: 'Stockholm Design Lab',
+    note: 'Precision, multidisciplinary identity systems spanning print, environment, and brand architecture — clarity as a competitive advantage.',
   },
   {
-    name: 'Stockholm Design Lab / Bedow / The Studio / SNASK',
-    note: 'Contemporary Swedish studios modeling precision (SDL), narrative craft (Bedow), lifestyle branding (The Studio), and bold personality (SNASK).',
+    name: 'Bedow',
+    note: 'Strategic branding with narrative craft for companies with intent — iterative process from first principles.',
+  },
+  {
+    name: 'The Studio · SNASK · Affairs · Yuppie',
+    note: 'Lifestyle branding for Svenskt Tenn and Verso; bold disruptive personality; dual professionalism/passion; adaptive Stockholm brand work.',
+  },
+];
+
+const swedishBrands = [
+  {
+    name: 'IKEA',
+    note: 'Family-founded Småland company whose blue/yellow mark and IKEA Sans export Swedish identity globally. Lesson: consistency over constant redesign; heritage encoded in acronym and color.',
+  },
+  {
+    name: 'Absolut',
+    note: 'Headline vs Script contrast — contemporary premium meeting creative personality. A Swedish brand system built on typographic duality.',
+  },
+  {
+    name: 'Svenskt Tenn',
+    note: 'Founded 1924 by Estrid Ericson with Josef Frank. 1930s modernism still current — pattern, craft, and seasonal campaigns that refresh without erasing DNA.',
+  },
+  {
+    name: 'Acne Studios',
+    note: 'Stockholm wordmark culture: refined typographic identity as the brand. Proof that Swedish modern brands lead with letterforms.',
   },
 ];
 
 const japanese = [
   {
     name: 'Yusaku Kamekura',
-    note: '“Boss” of postwar Japanese graphic design. Tokyo 1964 Olympic identity and corporate marks for Nikon, NTT, TDK — family-crest reduction meeting Western geometry.',
+    note: '“Boss” of postwar Japanese graphic design. Tokyo 1964 Olympic identity and corporate marks for Nikon, NTT, Meiji, TDK — family-crest (mon) reduction meeting Western geometry.',
+  },
+  {
+    name: 'Nippon Design Center',
+    note: 'Corporate-backed house agency Kamekura helped establish with Asahi, Toyota, Nomura, JR, Toshiba — proving identity systems as industrial infrastructure.',
   },
   {
     name: 'Ma (間)',
-    note: 'The beauty of interval. Negative space as structure, not emptiness — a core principle of Japandi and modern brand interfaces.',
+    note: 'The beauty of interval. Negative space as structure, not emptiness — a core principle shared with Scandinavian editing and modern brand interfaces.',
   },
   {
     name: 'Japandi',
     note: 'Natural overlap of Japanese restraint and Scandinavian functionalism: honest materials, edited compositions, calm authority without coldness.',
+  },
+  {
+    name: 'Eksell ↔ Japan',
+    note: 'Historical bridge: Eksell exhibited with Yusaku Kamekura in London packaging shows; Japanese IDEA named him among the world’s best; his monograph was published in Japan (2006).',
   },
 ];
 
 const decoAndWall = [
   {
     name: 'Art Deco geometry',
-    note: '1920s–30s commercial modernism: tall spaced capitals, chevrons, stepped forms, symmetry, and metallic accents. Used here as structure — not costume pastiche.',
+    note: '1920s–30s commercial modernism: tall spaced capitals, chevrons, stepped forms, symmetry, metallic accents. Cassandre’s Bifur/Acier Noir lineage. Used here as structure — not costume pastiche.',
   },
   {
     name: 'CBS Gastrotypographicalassemblage',
-    note: 'Lou Dorfsman’s 1966 type wall for the CBS Building cafeteria, with Herb Lubalin and Tom Carnase. Over a thousand hand-milled letters — typography as architectural appetite.',
+    note: 'Lou Dorfsman’s 1966 type wall for the cafeteria in Eero Saarinen’s CBS Building (“Black Rock”), composed with Herb Lubalin and Tom Carnase. ~1,650 hand-milled wooden letters + sculptural objects — typography as architectural appetite. Restored at the Culinary Institute of America.',
+  },
+  {
+    name: 'Why it matters here',
+    note: 'The wall turns brand vocabulary into a physical surface — mixed scale, mixed faces, compartmental energy like a typesetter’s tray on its side. That hunger powers our type-wall assemblage.',
   },
 ];
 
-const family = [
+const familyCases = [
   {
-    name: 'Heritage as strategy',
-    note: 'Research across heritage brands shows origin stories and craft provenance outperform decorative nostalgia. Continuity of values beats costume revival.',
+    name: 'Peregrine (8th generation)',
+    note: 'Heritage clothier modernized with bold type, badge/inktrap details, and a Shopify site built for loyal return visitors — past and present in one system.',
   },
   {
-    name: 'Peregrine · Pitcairn · Kocbek',
-    note: 'Family and multi-generational businesses modernized through clean type, refreshed systems, and websites that make clients/families the center — while keeping founding principles readable.',
+    name: 'Pitcairn (100+ years)',
+    note: 'Family office → multi-family advisory. Brand and website recentered on family as the product; classic appeal kept, type/palette/photography elevated.',
   },
   {
-    name: 'Identity continuity filter',
-    note: 'Before any new expression ships: does this continue the story, or abandon it? Corporate identity for family business must bend without breaking.',
+    name: 'Kocbek (since 1929)',
+    note: 'Three-generation mill abstracted its founding mill wheel into a mark that works in Ljubljana and London — craft proven, not merely claimed.',
+  },
+  {
+    name: 'Watson Bros (est. 1885)',
+    note: 'Dual-audience identity: contemporary wordmark + heritage seal + digital monogram. Website shifted from PDF-catalog feel to editorial workshop storytelling.',
+  },
+  {
+    name: 'Genesee · J.M. Smucker · Land O’Lakes',
+    note: 'Heritage CPG lessons: elevate what locals already love; family CEOs can champion bold CI when the business has outgrown the old mark; simplify for shelf and story.',
+  },
+  {
+    name: 'IKEA (Kamprad family origin)',
+    note: 'Swedish family-business archetype at global scale — name encodes place and founder; visual profile manuals in the 1980s ended logo drift.',
+  },
+];
+
+const familyPrinciples = [
+  {
+    title: 'Heritage is strategy, not decoration',
+    body: 'Origin stories, workshop photos, founding decisions, and craft methods are assets. Nostalgia costumes underperform documented provenance.',
+  },
+  {
+    title: 'Run the continuity filter',
+    body: 'Before any new expression ships: does this continue the family story, or abandon it? Identity must bend across generations without breaking.',
+  },
+  {
+    title: 'Build dual-audience systems',
+    body: 'Primary modern mark + heritage lockups + digital icons. Older stewards and younger buyers need different doors into the same house.',
+  },
+  {
+    title: 'Make the website editorial, not archival',
+    body: 'Successful family CI sites read like living magazines of craft — clear journeys, people at the center, history as context not the only content.',
+  },
+  {
+    title: 'Protect visual equities, retire clutter',
+    body: 'Keep the colors, crests, or word shapes that still earn recognition. Remove symbols that no longer tell the truth of the business.',
+  },
+  {
+    title: 'Hand off for the next steward',
+    body: 'Guidelines, asset libraries, and site systems documented so the next generation can build — not start over.',
   },
 ];
 ---
 
 <Layout
   title="Influences"
-  description="Research informing D. Philhower Studio — Swedish graphic designers, Japanese corporate identity, Art Deco, the CBS cafeteria type wall, and family-business branding."
+  description="Deep research informing D. Philhower Studio — Swedish graphic designers and brands, Japanese corporate identity, Art Deco, the CBS cafeteria type wall, and family-business branding websites."
   path="/influences"
   headerTheme="dark"
 >
@@ -73,21 +166,57 @@ const family = [
     <div class="deco-rule" aria-hidden="true"></div>
     <h1>Research behind the studio language.</h1>
     <p>
-      A working map of Swedish graphic culture, Japanese influence, Art Deco structure, mid-century type-wall
-      energy, and what successful family-business corporate identities get right online.
+      A working atlas of Swedish graphic designers and modern brands, Japanese influence, Art Deco structure,
+      CBS cafeteria type-wall energy, and what past websites get right about branding and corporate identity
+      for family businesses.
     </p>
   </header>
 
   <section class="section reveal" aria-labelledby="sweden-title">
-    <p class="section-label">Sweden</p>
+    <p class="section-label">Sweden · designers</p>
     <div class="deco-rule" aria-hidden="true"></div>
-    <h2 class="section-title" id="sweden-title">Swedish graphic designers & studios</h2>
+    <h2 class="section-title" id="sweden-title">Swedish graphic designers</h2>
     <p class="section-lead">
-      Functionalism with wit. Design treated as economy. Color and system over decoration.
+      Functionalism with wit. Design treated as economy. Letterforms and systems as national infrastructure.
     </p>
     <ul class="lineage">
       {
-        swedish.map((item) => (
+        swedishDesigners.map((item) => (
+          <li>
+            <strong>{item.name}</strong>
+            <span>{item.note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section reveal" aria-labelledby="studios-title">
+    <p class="section-label">Sweden · studios now</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="studios-title">Contemporary Stockholm practice</h2>
+    <ul class="lineage">
+      {
+        swedishStudios.map((item) => (
+          <li>
+            <strong>{item.name}</strong>
+            <span>{item.note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section reveal" aria-labelledby="brands-title">
+    <p class="section-label">Sweden · modern brands</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="brands-title">Graphic brands shaped by Swedish culture</h2>
+    <p class="section-lead">
+      Exportable clarity, typographic confidence, and heritage that still feels contemporary.
+    </p>
+    <ul class="lineage">
+      {
+        swedishBrands.map((item) => (
           <li>
             <strong>{item.name}</strong>
             <span>{item.note}</span>
@@ -102,7 +231,7 @@ const family = [
     <div class="deco-rule" aria-hidden="true"></div>
     <h2 class="section-title" id="japan-title">Japanese influence & corporate marks</h2>
     <p class="section-lead">
-      Reduction, harmony, and scalable identity systems — from Olympic marks to everyday corporate logos.
+      Reduction, harmony, and scalable identity systems — and a documented dialogue with Swedish design.
     </p>
     <ul class="lineage">
       {
@@ -120,10 +249,11 @@ const family = [
     <div class="type-wall-inner">
       <div class="type-wall-intro">
         <p class="section-label">CBS cafeteria · 1966</p>
-        <h2 id="wall-page-title">The type wall that still feeds designers.</h2>
+        <h2 id="wall-page-title">Energy like the type wall in the cafeteria.</h2>
         <p>
-          Dorfsman called the Gastrotypographicalassemblage his magnum opus: a typesetter’s tray turned
-          into architecture. That hunger for word-as-object powers our brand language walls.
+          Dorfsman called the Gastrotypographicalassemblage his magnum opus: a typesetter’s tray turned into
+          architecture inside Saarinen’s CBS Building. That appetite for word-as-object powers our brand
+          language walls.
         </p>
       </div>
       <div class="type-assemblage" aria-hidden="true">
@@ -166,16 +296,16 @@ const family = [
   </section>
 
   <section class="section reveal" aria-labelledby="family-title">
-    <p class="section-label">Family business · branding & CI</p>
+    <p class="section-label">Family business · past websites & CI</p>
     <div class="deco-rule" aria-hidden="true"></div>
-    <h2 class="section-title" id="family-title">What past brand websites get right</h2>
+    <h2 class="section-title" id="family-title">What branding sites get right</h2>
     <p class="section-lead">
-      Across heritage and family-office case studies, the strongest sites treat history as a strategic asset —
-      then pair it with modern systems and clear digital journeys.
+      Across heritage and family-office case studies, the strongest corporate identities and websites treat
+      history as a strategic asset — then pair it with modern systems and clear digital journeys.
     </p>
     <ul class="lineage">
       {
-        family.map((item) => (
+        familyCases.map((item) => (
           <li>
             <strong>{item.name}</strong>
             <span>{item.note}</span>
@@ -183,6 +313,22 @@ const family = [
         ))
       }
     </ul>
+  </section>
+
+  <section class="section reveal" aria-labelledby="principles-title">
+    <p class="section-label">Playbook</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="principles-title">Principles for family corporate identity</h2>
+    <div class="influence-grid">
+      {
+        familyPrinciples.map((item) => (
+          <article class="influence">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))
+      }
+    </div>
   </section>
 
   <section class="section reveal" aria-labelledby="apply-title">
