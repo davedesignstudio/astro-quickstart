@@ -5,12 +5,15 @@ export interface Props {
   title: string;
   description?: string;
   path?: string;
+  /** light = light text for dark/hero surfaces; dark = ink text for pale pages */
+  headerTheme?: 'light' | 'dark';
 }
 
 const {
   title,
   description = 'D. Philhower Studio crafts custom brand systems and websites with clarity, weight, and lasting presence.',
   path = Astro.url.pathname,
+  headerTheme = 'light',
 } = Astro.props as Props;
 
 const fullTitle = title.includes('Philhower') ? title : `${title} · D. Philhower Studio`;
@@ -39,7 +42,7 @@ const nav = [
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
+    <header class={`site-header theme-${headerTheme}`}>
       <a class="logo" href="/">
         D. Philhower
         <span>Studio</span>

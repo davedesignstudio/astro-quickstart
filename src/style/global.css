@@ -120,8 +120,18 @@ select {
   justify-content: space-between;
   gap: 1rem;
   padding: 1.25rem clamp(1.25rem, 4vw, 3rem);
+}
+
+.site-header.theme-light {
   color: var(--paper);
-  mix-blend-mode: difference;
+}
+
+.site-header.theme-light .logo {
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45);
+}
+
+.site-header.theme-dark {
+  color: var(--ink);
 }
 
 .logo {
@@ -172,7 +182,6 @@ select {
   background: var(--signal);
   color: var(--signal-ink) !important;
   border-color: var(--signal);
-  mix-blend-mode: normal;
 }
 
 .site-main {
@@ -872,14 +881,5 @@ select {
 @media (max-width: 640px) {
   .nav a:not(.nav-cta) {
     display: none;
-  }
-
-  .site-header {
-    mix-blend-mode: normal;
-    color: var(--paper);
-  }
-
-  .logo {
-    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
   }
 }
