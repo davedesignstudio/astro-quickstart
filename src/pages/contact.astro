@@ -4,12 +4,13 @@ import Layout from '../components/Layout.astro';
 
 <Layout
   title="Contact"
-  description="Start a brand or website project with D. Philhower Studio."
+  description="Start a brand, corporate identity, or website project with D. Philhower Studio."
   path="/contact"
   headerTheme="dark"
 >
   <header class="page-hero">
     <p class="brand-line">D. Philhower Studio</p>
+    <div class="deco-rule" aria-hidden="true"></div>
     <h1>Tell us about the work ahead.</h1>
     <p>Share a few details and we’ll reply within two business days.</p>
   </header>
@@ -22,13 +23,13 @@ import Layout from '../components/Layout.astro';
       </div>
       <div>
         <p class="section-label">Focus</p>
-        <p style="color: var(--ink-soft); max-width: 28ch;">
-          Custom brand creation, website design, and combined brand + web systems.
+        <p style="color: var(--ink-soft); max-width: 30ch;">
+          Custom brand creation, corporate identity for family businesses, and website design.
         </p>
       </div>
       <div>
         <p class="section-label">Typical timeline</p>
-        <p style="color: var(--ink-soft); max-width: 28ch;">
+        <p style="color: var(--ink-soft); max-width: 30ch;">
           Brand systems from 4–8 weeks. Websites from 6–12 weeks, depending on scope.
         </p>
       </div>
@@ -37,7 +38,7 @@ import Layout from '../components/Layout.astro';
     <form class="contact-form" id="contact-form" novalidate>
       <div class="form-success" role="status">
         Thanks — your message is ready to send. We’ll be in touch soon. For now, you can also email
-        <a href="mailto:hello@dphilhowerstudio.com" style="color: var(--signal);">hello@dphilhowerstudio.com</a>.
+        <a href="mailto:hello@dphilhowerstudio.com" style="color: var(--brass-soft);">hello@dphilhowerstudio.com</a>.
       </div>
       <div class="form-fields">
         <div class="field">
@@ -49,7 +50,7 @@ import Layout from '../components/Layout.astro';
           <input id="email" name="email" type="email" autocomplete="email" required />
         </div>
         <div class="field">
-          <label for="company">Company</label>
+          <label for="company">Company / family business</label>
           <input id="company" name="company" type="text" autocomplete="organization" />
         </div>
         <div class="field">
@@ -57,6 +58,7 @@ import Layout from '../components/Layout.astro';
           <select id="interest" name="interest" required>
             <option value="">Select one</option>
             <option value="brand">Custom brand creation</option>
+            <option value="family-ci">Corporate identity for family business</option>
             <option value="website">Website design</option>
             <option value="both">Brand + website</option>
             <option value="other">Something else</option>
@@ -64,7 +66,11 @@ import Layout from '../components/Layout.astro';
         </div>
         <div class="field">
           <label for="message">Project notes</label>
-          <textarea id="message" name="message" required placeholder="Goals, timeline, links, anything useful…"></textarea>
+          <textarea
+            id="message"
+            name="message"
+            required
+            placeholder="Goals, history, timeline, links — anything useful…"></textarea>
         </div>
         <button class="btn btn-ink" type="submit">Send message</button>
         <p class="form-note">

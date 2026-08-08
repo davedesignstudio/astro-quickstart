@@ -16,9 +16,14 @@ describe('D. Philhower Studio site', () => {
       })
   })
 
-  it('navigates to contact', () => {
-    cy.contains('a', 'Start a project').first().click()
-    cy.location('pathname').should('eq', '/contact')
-    cy.get('h1').contains('Tell us about the work ahead')
+  it('shows the type wall assemblage', () => {
+    cy.get('.type-wall').should('exist')
+    cy.get('.type-assemblage .type-cell').should('have.length.greaterThan', 8)
+  })
+
+  it('navigates to influences research', () => {
+    cy.contains('a', 'See the influences').click()
+    cy.location('pathname').should('eq', '/influences')
+    cy.get('h1').contains('Research behind the studio language')
   })
 })

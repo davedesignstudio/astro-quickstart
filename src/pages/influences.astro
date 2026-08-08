@@ -1,0 +1,226 @@
+---
+import Layout from '../components/Layout.astro';
+
+const swedish = [
+  {
+    name: 'Olle Eksell',
+    note: 'Designer of Sweden’s first modern design program for Mazetti (Ögon Cacao). Author of Design = Economy. Friend of Paul Rand; later recognized by Japan’s IDEA magazine and published in a Japanese monograph.',
+  },
+  {
+    name: 'Rune Söderqvist',
+    note: 'Creator of the ABBA logotype — a national mark that proved Swedish graphic wit could scale into global culture.',
+  },
+  {
+    name: 'Clara von Zweigbergk',
+    note: 'Stockholm practice defined by color, paper, and balance. Shaped HAY’s visual identity, including HAY Tokyo — a direct Sweden–Japan bridge.',
+  },
+  {
+    name: 'Stockholm Design Lab / Bedow / The Studio / SNASK',
+    note: 'Contemporary Swedish studios modeling precision (SDL), narrative craft (Bedow), lifestyle branding (The Studio), and bold personality (SNASK).',
+  },
+];
+
+const japanese = [
+  {
+    name: 'Yusaku Kamekura',
+    note: '“Boss” of postwar Japanese graphic design. Tokyo 1964 Olympic identity and corporate marks for Nikon, NTT, TDK — family-crest reduction meeting Western geometry.',
+  },
+  {
+    name: 'Ma (間)',
+    note: 'The beauty of interval. Negative space as structure, not emptiness — a core principle of Japandi and modern brand interfaces.',
+  },
+  {
+    name: 'Japandi',
+    note: 'Natural overlap of Japanese restraint and Scandinavian functionalism: honest materials, edited compositions, calm authority without coldness.',
+  },
+];
+
+const decoAndWall = [
+  {
+    name: 'Art Deco geometry',
+    note: '1920s–30s commercial modernism: tall spaced capitals, chevrons, stepped forms, symmetry, and metallic accents. Used here as structure — not costume pastiche.',
+  },
+  {
+    name: 'CBS Gastrotypographicalassemblage',
+    note: 'Lou Dorfsman’s 1966 type wall for the CBS Building cafeteria, with Herb Lubalin and Tom Carnase. Over a thousand hand-milled letters — typography as architectural appetite.',
+  },
+];
+
+const family = [
+  {
+    name: 'Heritage as strategy',
+    note: 'Research across heritage brands shows origin stories and craft provenance outperform decorative nostalgia. Continuity of values beats costume revival.',
+  },
+  {
+    name: 'Peregrine · Pitcairn · Kocbek',
+    note: 'Family and multi-generational businesses modernized through clean type, refreshed systems, and websites that make clients/families the center — while keeping founding principles readable.',
+  },
+  {
+    name: 'Identity continuity filter',
+    note: 'Before any new expression ships: does this continue the story, or abandon it? Corporate identity for family business must bend without breaking.',
+  },
+];
+---
+
+<Layout
+  title="Influences"
+  description="Research informing D. Philhower Studio — Swedish graphic designers, Japanese corporate identity, Art Deco, the CBS cafeteria type wall, and family-business branding."
+  path="/influences"
+  headerTheme="dark"
+>
+  <header class="page-hero">
+    <p class="brand-line">D. Philhower Studio</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h1>Research behind the studio language.</h1>
+    <p>
+      A working map of Swedish graphic culture, Japanese influence, Art Deco structure, mid-century type-wall
+      energy, and what successful family-business corporate identities get right online.
+    </p>
+  </header>
+
+  <section class="section reveal" aria-labelledby="sweden-title">
+    <p class="section-label">Sweden</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="sweden-title">Swedish graphic designers & studios</h2>
+    <p class="section-lead">
+      Functionalism with wit. Design treated as economy. Color and system over decoration.
+    </p>
+    <ul class="lineage">
+      {
+        swedish.map((item) => (
+          <li>
+            <strong>{item.name}</strong>
+            <span>{item.note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section reveal" aria-labelledby="japan-title">
+    <p class="section-label">Japan</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="japan-title">Japanese influence & corporate marks</h2>
+    <p class="section-lead">
+      Reduction, harmony, and scalable identity systems — from Olympic marks to everyday corporate logos.
+    </p>
+    <ul class="lineage">
+      {
+        japanese.map((item) => (
+          <li>
+            <strong>{item.name}</strong>
+            <span>{item.note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="type-wall reveal" aria-labelledby="wall-page-title">
+    <div class="type-wall-inner">
+      <div class="type-wall-intro">
+        <p class="section-label">CBS cafeteria · 1966</p>
+        <h2 id="wall-page-title">The type wall that still feeds designers.</h2>
+        <p>
+          Dorfsman called the Gastrotypographicalassemblage his magnum opus: a typesetter’s tray turned
+          into architecture. That hunger for word-as-object powers our brand language walls.
+        </p>
+      </div>
+      <div class="type-assemblage" aria-hidden="true">
+        <div class="type-cell xl span2">Letter</div>
+        <div class="type-cell lg brass">Appetite</div>
+        <div class="type-cell md accent">Wood</div>
+        <div class="type-cell lg">Lubalin</div>
+        <div class="type-cell md span2">Assemblage</div>
+        <div class="type-cell xl">CBS</div>
+        <div class="type-cell md brass">Dorfsman</div>
+        <div class="type-cell lg">Carnase</div>
+        <div class="type-cell md">Milled</div>
+        <div class="type-cell lg span2">Typography</div>
+        <div class="type-cell md accent">Blackrock</div>
+        <div class="type-cell xl span2">Wall</div>
+        <div class="type-cell sm">1966</div>
+        <div class="type-cell sm">Saarinen</div>
+        <div class="type-cell sm brass">1,650 letters</div>
+        <div class="type-cell md">Menu</div>
+        <div class="type-cell sm">Pine</div>
+        <div class="type-cell lg">Form</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="deco-title">
+    <p class="section-label">Art Deco & structure</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="deco-title">Geometry that signals permanence</h2>
+    <ul class="lineage">
+      {
+        decoAndWall.map((item) => (
+          <li>
+            <strong>{item.name}</strong>
+            <span>{item.note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section reveal" aria-labelledby="family-title">
+    <p class="section-label">Family business · branding & CI</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="family-title">What past brand websites get right</h2>
+    <p class="section-lead">
+      Across heritage and family-office case studies, the strongest sites treat history as a strategic asset —
+      then pair it with modern systems and clear digital journeys.
+    </p>
+    <ul class="lineage">
+      {
+        family.map((item) => (
+          <li>
+            <strong>{item.name}</strong>
+            <span>{item.note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section reveal" aria-labelledby="apply-title">
+    <p class="section-label">How it shows up here</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="apply-title">Synthesis, not costume.</h2>
+    <div class="influence-grid">
+      <article class="influence">
+        <span class="tag">Swedish</span>
+        <h3>Clarity & economy</h3>
+        <p>Editorial lists, system thinking, and color used with intent — design as serious business.</p>
+      </article>
+      <article class="influence">
+        <span class="tag">Japanese</span>
+        <h3>Ma & reduction</h3>
+        <p>Breathing room around the brand mark. Asymmetry with balance. Less noise, more signal.</p>
+      </article>
+      <article class="influence">
+        <span class="tag">Deco</span>
+        <h3>Tall type & brass rules</h3>
+        <p>Spaced capitals, stepped accents, and geometric frames that suggest permanence.</p>
+      </article>
+      <article class="influence">
+        <span class="tag">Type wall</span>
+        <h3>Word as architecture</h3>
+        <p>Assemblage grids that turn vocabulary into a physical, energetic surface.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact-strip reveal" aria-labelledby="inf-cta">
+    <div class="contact-strip-inner">
+      <h2 id="inf-cta">Bring this rigor to your identity.</h2>
+      <p>Especially if you’re stewarding a family name into its next chapter.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/contact">Start a project</a>
+        <a class="btn btn-ghost" href="/work">View work</a>
+      </div>
+    </div>
+  </section>
+</Layout>

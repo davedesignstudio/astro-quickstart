@@ -5,13 +5,12 @@ export interface Props {
   title: string;
   description?: string;
   path?: string;
-  /** light = light text for dark/hero surfaces; dark = ink text for pale pages */
   headerTheme?: 'light' | 'dark';
 }
 
 const {
   title,
-  description = 'D. Philhower Studio crafts custom brand systems and websites with clarity, weight, and lasting presence.',
+  description = 'D. Philhower Studio crafts custom brand systems and websites with clarity, weight, and lasting presence — informed by Swedish design lineage, Japanese ma, and Art Deco structure.',
   path = Astro.url.pathname,
   headerTheme = 'light',
 } = Astro.props as Props;
@@ -19,6 +18,7 @@ const {
 const fullTitle = title.includes('Philhower') ? title : `${title} · D. Philhower Studio`;
 const nav = [
   { href: '/work', label: 'Work' },
+  { href: '/influences', label: 'Influences' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact', cta: true },
 ];
@@ -30,12 +30,12 @@ const nav = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#12141a" />
+    <meta name="theme-color" content="#111418" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Tenor+Sans&display=swap"
       rel="stylesheet"
     />
     <title>{fullTitle}</title>
@@ -68,6 +68,7 @@ const nav = [
       <p>© {new Date().getFullYear()} D. Philhower Studio</p>
       <div class="footer-links">
         <a href="/work">Work</a>
+        <a href="/influences">Influences</a>
         <a href="/about">About</a>
         <a href="mailto:hello@dphilhowerstudio.com">hello@dphilhowerstudio.com</a>
       </div>

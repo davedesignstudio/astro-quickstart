@@ -1,20 +1,31 @@
-/* D. Philhower Studio — design system */
+/* D. Philhower Studio
+   Research synthesis:
+   - Swedish clarity (Eksell, von Zweigbergk, Stockholm Design Lab, Bedow)
+   - Japanese ma + corporate mark reduction (Kamekura, Japandi)
+   - Art Deco geometry & tall spaced type
+   - CBS cafeteria type-wall energy (Dorfsman / Lubalin / Carnase)
+   - Family-business corporate identity as living heritage
+*/
 
 :root {
-  --ink: #12141a;
-  --ink-soft: #2a2f38;
-  --mist: #e7eaee;
-  --paper: #f3f1ec;
-  --slate: #5c6570;
-  --forest: #0f3d2e;
-  --signal: #d8f54a;
-  --signal-ink: #12141a;
-  --line: rgba(18, 20, 26, 0.12);
-  --glow-cool: #c5d4e0;
-  --glow-warm: #ebe4d6;
+  --ink: #111418;
+  --ink-soft: #2c323a;
+  --paper: #e9eaed;
+  --mist: #dfe4e8;
+  --washi: #f2f1ec;
+  --slate: #5a6270;
+  --pine: #1c3d36;
+  --lacquer: #c23a22;
+  --brass: #b8956c;
+  --brass-soft: #d4c0a0;
+  --wall: #171411;
+  --wall-letter: #f0ebe3;
+  --line: rgba(17, 20, 24, 0.14);
+  --line-soft: rgba(17, 20, 24, 0.08);
 
   --font-display: "Syne", sans-serif;
   --font-body: "Figtree", sans-serif;
+  --font-deco: "Tenor Sans", "Syne", sans-serif;
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -46,9 +57,9 @@ body {
   line-height: 1.55;
   color: var(--ink);
   background:
-    radial-gradient(120% 80% at 100% 0%, var(--glow-cool) 0%, transparent 55%),
-    radial-gradient(90% 70% at 0% 100%, var(--glow-warm) 0%, transparent 50%),
-    linear-gradient(165deg, var(--paper) 0%, var(--mist) 100%);
+    radial-gradient(100% 70% at 100% 0%, rgba(184, 149, 108, 0.18) 0%, transparent 50%),
+    radial-gradient(80% 60% at 0% 100%, rgba(28, 61, 54, 0.12) 0%, transparent 55%),
+    linear-gradient(165deg, var(--washi) 0%, var(--paper) 48%, var(--mist) 100%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
@@ -65,7 +76,7 @@ a {
 }
 
 a:hover {
-  color: var(--forest);
+  color: var(--pine);
 }
 
 h1,
@@ -83,7 +94,8 @@ p {
   margin: 0;
 }
 
-ul {
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -103,7 +115,7 @@ select {
   z-index: 100;
   padding: 0.75rem 1rem;
   background: var(--ink);
-  color: var(--paper);
+  color: var(--washi);
   text-decoration: none;
 }
 
@@ -111,6 +123,7 @@ select {
   top: 1rem;
 }
 
+/* —— Header —— */
 .site-header {
   position: absolute;
   inset: 0 0 auto;
@@ -123,7 +136,7 @@ select {
 }
 
 .site-header.theme-light {
-  color: var(--paper);
+  color: var(--washi);
 }
 
 .site-header.theme-light .logo {
@@ -145,11 +158,12 @@ select {
 
 .logo span {
   display: block;
-  font-weight: 500;
-  font-size: 0.72em;
-  letter-spacing: 0.08em;
+  font-family: var(--font-deco);
+  font-weight: 400;
+  font-size: 0.68em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  opacity: 0.75;
+  opacity: 0.8;
 }
 
 .nav {
@@ -179,9 +193,9 @@ select {
 }
 
 .nav-cta:hover {
-  background: var(--signal);
-  color: var(--signal-ink) !important;
-  border-color: var(--signal);
+  background: var(--lacquer);
+  color: var(--washi) !important;
+  border-color: var(--lacquer);
 }
 
 .site-main {
@@ -194,7 +208,7 @@ select {
   min-height: 100svh;
   display: grid;
   align-items: end;
-  color: var(--paper);
+  color: var(--washi);
   overflow: hidden;
 }
 
@@ -217,8 +231,8 @@ select {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(18, 20, 26, 0.35) 0%, rgba(18, 20, 26, 0.15) 35%, rgba(18, 20, 26, 0.78) 100%),
-    linear-gradient(90deg, rgba(18, 20, 26, 0.45) 0%, transparent 55%);
+    linear-gradient(180deg, rgba(17, 20, 24, 0.4) 0%, rgba(17, 20, 24, 0.18) 38%, rgba(17, 20, 24, 0.82) 100%),
+    linear-gradient(90deg, rgba(17, 20, 24, 0.5) 0%, transparent 58%);
 }
 
 .hero-content {
@@ -228,7 +242,7 @@ select {
   margin: 0 auto;
   padding: 0 0 clamp(3rem, 8vh, 5.5rem);
   display: grid;
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .brand-mark {
@@ -243,21 +257,22 @@ select {
 
 .brand-mark em {
   font-style: normal;
-  color: var(--signal);
+  color: var(--brass-soft);
 }
 
 .hero-headline {
-  font-family: var(--font-display);
-  font-size: clamp(1.35rem, 1rem + 1.4vw, 2rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  max-width: 22ch;
+  font-family: var(--font-deco);
+  font-size: clamp(1.2rem, 0.95rem + 1.1vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  max-width: 28ch;
   animation: rise 1s var(--ease) 0.12s both;
 }
 
 .hero-support {
-  max-width: 36ch;
-  color: rgba(243, 241, 236, 0.82);
+  max-width: 38ch;
+  color: rgba(242, 241, 236, 0.82);
   animation: rise 1s var(--ease) 0.22s both;
 }
 
@@ -289,35 +304,35 @@ select {
 }
 
 .btn-primary {
-  background: var(--signal);
-  color: var(--signal-ink);
+  background: var(--lacquer);
+  color: var(--washi);
 }
 
 .btn-primary:hover {
-  background: #e7ff7a;
-  color: var(--signal-ink);
+  background: #d4482e;
+  color: var(--washi);
 }
 
 .btn-ghost {
-  border-color: rgba(243, 241, 236, 0.55);
-  color: var(--paper);
+  border-color: rgba(242, 241, 236, 0.55);
+  color: var(--washi);
   background: transparent;
 }
 
 .btn-ghost:hover {
-  border-color: var(--paper);
-  background: rgba(243, 241, 236, 0.08);
-  color: var(--paper);
+  border-color: var(--washi);
+  background: rgba(242, 241, 236, 0.08);
+  color: var(--washi);
 }
 
 .btn-ink {
   background: var(--ink);
-  color: var(--paper);
+  color: var(--washi);
 }
 
 .btn-ink:hover {
-  background: var(--forest);
-  color: var(--paper);
+  background: var(--pine);
+  color: var(--washi);
 }
 
 .btn-outline {
@@ -328,7 +343,7 @@ select {
 
 .btn-outline:hover {
   background: var(--ink);
-  color: var(--paper);
+  color: var(--washi);
 }
 
 /* —— Sections —— */
@@ -339,9 +354,10 @@ select {
 }
 
 .section-label {
+  font-family: var(--font-deco);
   font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 400;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--slate);
   margin-bottom: 0.85rem;
@@ -354,7 +370,7 @@ select {
 }
 
 .section-lead {
-  max-width: 42ch;
+  max-width: 44ch;
   color: var(--ink-soft);
   margin-bottom: 2.5rem;
 }
@@ -363,6 +379,13 @@ select {
   display: grid;
   gap: 0.75rem;
   margin-bottom: 2.75rem;
+}
+
+.deco-rule {
+  width: 4.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brass), transparent);
+  margin: 0.35rem 0 1rem;
 }
 
 .reveal {
@@ -376,7 +399,140 @@ select {
   transform: none;
 }
 
-/* Services — no cards; editorial list */
+/* —— Type wall (CBS cafeteria energy) —— */
+.type-wall {
+  margin: 0;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 3vw, 2rem);
+  background:
+    radial-gradient(120% 80% at 20% 0%, rgba(184, 149, 108, 0.16), transparent 45%),
+    var(--wall);
+  color: var(--wall-letter);
+  overflow: hidden;
+}
+
+.type-wall-inner {
+  width: min(100%, var(--max));
+  margin: 0 auto;
+}
+
+.type-wall-intro {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  max-width: 42ch;
+}
+
+.type-wall-intro .section-label {
+  color: var(--brass-soft);
+}
+
+.type-wall-intro h2 {
+  font-size: clamp(1.8rem, 1.3rem + 1.8vw, 2.8rem);
+}
+
+.type-wall-intro p {
+  color: rgba(240, 235, 227, 0.72);
+}
+
+.type-assemblage {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.45rem;
+  border: 1px solid rgba(184, 149, 108, 0.35);
+  padding: 0.45rem;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 14px,
+      rgba(184, 149, 108, 0.05) 14px,
+      rgba(184, 149, 108, 0.05) 15px
+    );
+}
+
+.type-cell {
+  display: grid;
+  place-items: center;
+  min-height: 4.5rem;
+  padding: 0.65rem 0.4rem;
+  text-align: center;
+  border: 1px solid rgba(240, 235, 227, 0.08);
+  background: rgba(240, 235, 227, 0.03);
+  font-family: var(--font-display);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: background 0.35s var(--ease), color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.type-cell:hover {
+  background: rgba(194, 58, 34, 0.9);
+  color: var(--washi);
+  transform: translateY(-2px);
+}
+
+.type-cell.xl {
+  grid-column: span 2;
+  font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.6rem);
+  font-weight: 800;
+}
+
+.type-cell.lg {
+  font-size: clamp(1.15rem, 0.9rem + 1vw, 1.7rem);
+  font-weight: 700;
+}
+
+.type-cell.md {
+  font-size: clamp(0.95rem, 0.8rem + 0.5vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--font-deco);
+}
+
+.type-cell.sm {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass-soft);
+  font-family: var(--font-deco);
+}
+
+.type-cell.accent {
+  background: rgba(194, 58, 34, 0.18);
+  color: #f2b4a8;
+}
+
+.type-cell.brass {
+  background: rgba(184, 149, 108, 0.18);
+  color: var(--brass-soft);
+}
+
+.type-cell.span2 {
+  grid-column: span 2;
+}
+
+.type-cell.span3 {
+  grid-column: span 3;
+}
+
+@media (max-width: 800px) {
+  .type-assemblage {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .type-cell.xl,
+  .type-cell.span2,
+  .type-cell.span3 {
+    grid-column: span 1;
+  }
+
+  .type-cell.xl {
+    grid-column: span 3;
+  }
+}
+
+/* —— Services —— */
 .services {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -400,10 +556,10 @@ select {
 }
 
 .service-index {
-  font-family: var(--font-display);
+  font-family: var(--font-deco);
   font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--forest);
+  letter-spacing: 0.08em;
+  color: var(--lacquer);
 }
 
 .service-item h3 {
@@ -426,7 +582,7 @@ select {
   }
 }
 
-/* Work grid — interaction-forward, not card-heavy */
+/* —— Work —— */
 .work-grid {
   display: grid;
   gap: 2rem 1.5rem;
@@ -479,7 +635,8 @@ select {
   align-items: baseline;
 }
 
-.work-meta h3 {
+.work-meta h3,
+.work-meta h2 {
   font-size: 1.25rem;
 }
 
@@ -488,11 +645,10 @@ select {
   color: var(--slate);
 }
 
-/* Process */
+/* —— Process —— */
 .process-steps {
   display: grid;
   gap: 2rem;
-  counter-reset: step;
 }
 
 @media (min-width: 800px) {
@@ -508,6 +664,16 @@ select {
   border-top: 2px solid var(--ink);
 }
 
+.process-step::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--brass);
+}
+
 .process-step h3 {
   font-size: 1.35rem;
   margin-bottom: 0.6rem;
@@ -517,7 +683,45 @@ select {
   color: var(--ink-soft);
 }
 
-/* About band */
+/* —— Influences —— */
+.influence-grid {
+  display: grid;
+  gap: 1.75rem;
+}
+
+@media (min-width: 760px) {
+  .influence-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.influence {
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.influence h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.55rem;
+}
+
+.influence p {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  max-width: 42ch;
+}
+
+.influence .tag {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  font-family: var(--font-deco);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lacquer);
+}
+
+/* —— About band —— */
 .about-band {
   display: grid;
   gap: 2.5rem;
@@ -538,6 +742,15 @@ select {
   background: var(--ink);
 }
 
+.about-visual::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 35%;
+  background: linear-gradient(transparent, rgba(17, 20, 24, 0.55));
+  pointer-events: none;
+}
+
 .about-visual img {
   width: 100%;
   height: 100%;
@@ -546,7 +759,7 @@ select {
 }
 
 .about-copy .section-title {
-  max-width: 12ch;
+  max-width: 14ch;
 }
 
 .about-copy p + p {
@@ -555,26 +768,36 @@ select {
 
 .about-copy p {
   color: var(--ink-soft);
-  max-width: 38ch;
+  max-width: 40ch;
 }
 
-/* Contact CTA strip */
+/* —— Contact strip —— */
 .contact-strip {
   position: relative;
   margin: 0;
   padding: var(--space-xl) clamp(1.25rem, 4vw, 3rem);
   background: var(--ink);
-  color: var(--paper);
+  color: var(--washi);
   overflow: hidden;
 }
 
 .contact-strip::before {
   content: "";
   position: absolute;
-  inset: auto -10% -40% 40%;
-  height: 80%;
-  background: radial-gradient(circle, rgba(216, 245, 74, 0.18), transparent 65%);
+  inset: auto -10% -45% 35%;
+  height: 85%;
+  background: radial-gradient(circle, rgba(184, 149, 108, 0.22), transparent 65%);
   pointer-events: none;
+}
+
+.contact-strip::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  left: clamp(1.25rem, 4vw, 3rem);
+  width: 3.5rem;
+  height: 2px;
+  background: var(--brass);
 }
 
 .contact-strip-inner {
@@ -583,6 +806,7 @@ select {
   margin: 0 auto;
   display: grid;
   gap: 1.5rem;
+  padding-top: 1rem;
 }
 
 .contact-strip h2 {
@@ -591,11 +815,11 @@ select {
 }
 
 .contact-strip p {
-  max-width: 36ch;
-  color: rgba(243, 241, 236, 0.78);
+  max-width: 38ch;
+  color: rgba(242, 241, 236, 0.78);
 }
 
-/* Footer */
+/* —— Footer —— */
 .site-footer {
   padding: 2rem clamp(1.25rem, 4vw, 3rem) 2.5rem;
   border-top: 1px solid var(--line);
@@ -612,11 +836,12 @@ select {
 }
 
 .site-footer a:hover {
-  color: var(--forest);
+  color: var(--pine);
 }
 
 .footer-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.25rem;
 }
 
@@ -628,10 +853,10 @@ select {
 }
 
 .page-hero .brand-line {
-  font-family: var(--font-display);
-  font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.1rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--font-deco);
+  font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.05rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
 
@@ -642,13 +867,15 @@ select {
 }
 
 .page-hero p {
-  max-width: 40ch;
+  max-width: 42ch;
   color: var(--ink-soft);
 }
 
 .page-hero.dark {
-  color: var(--paper);
-  background: var(--ink);
+  color: var(--washi);
+  background:
+    radial-gradient(90% 80% at 100% 0%, rgba(184, 149, 108, 0.2), transparent 50%),
+    var(--ink);
   width: 100%;
   max-width: none;
   padding-left: clamp(1.25rem, 4vw, 3rem);
@@ -661,10 +888,9 @@ select {
 }
 
 .page-hero.dark p {
-  color: rgba(243, 241, 236, 0.75);
+  color: rgba(242, 241, 236, 0.75);
 }
 
-/* Work page */
 .work-page-grid {
   display: grid;
   gap: 3rem 1.75rem;
@@ -681,7 +907,6 @@ select {
   aspect-ratio: 5 / 4;
 }
 
-/* About page */
 .prose-block {
   display: grid;
   gap: 2.5rem;
@@ -708,7 +933,7 @@ select {
 .stat-list strong {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 1.4rem + 1.2vw, 2.4rem);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
   letter-spacing: -0.03em;
   margin-bottom: 0.25rem;
 }
@@ -745,7 +970,31 @@ select {
   font-size: 0.98rem;
 }
 
-/* Contact form */
+.lineage {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.lineage li {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.lineage strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.lineage span {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  max-width: 56ch;
+}
+
+/* —— Contact form —— */
 .contact-layout {
   display: grid;
   gap: 3rem;
@@ -774,14 +1023,14 @@ select {
 }
 
 .contact-details a:hover {
-  color: var(--forest);
+  color: var(--pine);
 }
 
 .contact-form {
   display: grid;
   gap: 1.15rem;
   padding: 1.75rem;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.42);
   border: 1px solid var(--line);
   backdrop-filter: blur(8px);
 }
@@ -810,7 +1059,7 @@ select {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  outline: 2px solid var(--forest);
+  outline: 2px solid var(--pine);
   outline-offset: 1px;
 }
 
@@ -827,8 +1076,8 @@ select {
 .form-success {
   display: none;
   padding: 1.25rem;
-  background: var(--forest);
-  color: var(--paper);
+  background: var(--pine);
+  color: var(--washi);
 }
 
 .contact-form.is-sent .form-fields {
@@ -839,7 +1088,6 @@ select {
   display: block;
 }
 
-/* Animations */
 @keyframes rise {
   from {
     opacity: 0;

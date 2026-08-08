@@ -4,21 +4,21 @@ import Layout from '../components/Layout.astro';
 const projects = [
   {
     title: 'Northline Provisions',
-    meta: 'Brand system · Packaging',
+    meta: 'Family brand system · Packaging',
     image:
       'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1400&q=80',
     alt: 'Brand design workspace with laptop, sketches, and coffee',
   },
   {
     title: 'Harbor & Co.',
-    meta: 'Website · Visual identity',
+    meta: 'Corporate identity · Website',
     image:
       'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80',
     alt: 'Laptop showing a website layout on a clean desk',
   },
   {
     title: 'Field Theory',
-    meta: 'Brand refresh · Digital',
+    meta: 'Brand refresh · Digital system',
     image:
       'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80',
     alt: 'Designer workspace with color swatches and typography tools',
@@ -28,22 +28,43 @@ const projects = [
 const services = [
   {
     title: 'Custom brand creation',
-    body: 'Naming support, logo systems, type, color, and guidelines that hold up across print, packaging, and screens.',
+    body: 'Marks, type, color, and guidelines with Swedish clarity and Japanese reduction — systems that hold across print, packaging, and screens.',
+  },
+  {
+    title: 'Corporate identity for family business',
+    body: 'Heritage treated as strategy, not nostalgia. Continuity of craft across generations, modernized for today’s market.',
   },
   {
     title: 'Website design',
-    body: 'Clear structure, expressive visuals, and interfaces that make your brand feel intentional from the first scroll.',
+    body: 'Sites with presence — structured like Art Deco geometry, breathing with Japanese ma, built to carry the brand forward.',
   },
-  {
-    title: 'Brand + web systems',
-    body: 'One cohesive language across identity and site — so every touchpoint feels like the same studio made it.',
-  },
+];
+
+const wallWords = [
+  { text: 'Brand', class: 'xl span2' },
+  { text: 'Identity', class: 'lg brass' },
+  { text: 'Ma', class: 'md accent' },
+  { text: 'System', class: 'lg' },
+  { text: 'Heritage', class: 'md span2' },
+  { text: 'Type', class: 'xl' },
+  { text: 'Deco', class: 'md brass' },
+  { text: 'Mark', class: 'lg' },
+  { text: 'Craft', class: 'md' },
+  { text: 'Clarity', class: 'lg span2' },
+  { text: 'Family', class: 'md accent' },
+  { text: 'Presence', class: 'xl span2' },
+  { text: 'Sweden', class: 'sm' },
+  { text: 'Japan', class: 'sm' },
+  { text: 'CBS Wall', class: 'sm brass' },
+  { text: 'Economy', class: 'md' },
+  { text: 'Mon', class: 'sm' },
+  { text: 'Form', class: 'lg' },
 ];
 ---
 
 <Layout
   title="D. Philhower Studio"
-  description="Graphic design studio specializing in custom brand creation and website design."
+  description="Graphic design studio specializing in custom brand creation, corporate identity for family businesses, and website design — drawing from Swedish, Japanese, and Art Deco lineages."
   path="/"
 >
   <section class="hero" aria-label="Studio introduction">
@@ -58,22 +79,39 @@ const services = [
     </div>
     <div class="hero-content">
       <h1 class="brand-mark">D. Philhower <em>Studio</em></h1>
-      <p class="hero-headline">Brands with weight. Sites with presence.</p>
+      <p class="hero-headline">Identity with weight across generations.</p>
       <p class="hero-support">
-        Custom brand systems and websites for businesses ready to look like they mean it.
+        Custom brand systems and websites for family businesses and modern makers — crafted from Swedish clarity, Japanese ma, and Art Deco structure.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="/contact">Start a project</a>
-        <a class="btn btn-ghost" href="/work">View selected work</a>
+        <a class="btn btn-ghost" href="/influences">See the influences</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="type-wall reveal" aria-labelledby="wall-title">
+    <div class="type-wall-inner">
+      <div class="type-wall-intro">
+        <p class="section-label">Type wall</p>
+        <h2 id="wall-title">Energy from the cafeteria wall.</h2>
+        <p>
+          Inspired by Lou Dorfsman’s Gastrotypographicalassemblage for the CBS Building cafeteria —
+          a living wall of words where brand language becomes architecture.
+        </p>
+      </div>
+      <div class="type-assemblage" aria-hidden="true">
+        {wallWords.map((word) => <div class={`type-cell ${word.class}`}>{word.text}</div>)}
       </div>
     </div>
   </section>
 
   <section class="section services reveal" aria-labelledby="services-title">
     <p class="section-label">What we do</p>
-    <h2 class="section-title" id="services-title">Design that carries your name further.</h2>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="services-title">Corporate identity that carries the name further.</h2>
     <p class="section-lead">
-      We specialize in custom brand creation and website design — the two surfaces people meet you first.
+      Brand creation and website design with a specialty in family-business identity — systems that honor provenance while looking inevitable today.
     </p>
     <ol class="service-list">
       {
@@ -91,8 +129,9 @@ const services = [
   <section class="section reveal" aria-labelledby="work-title">
     <div class="section-head">
       <p class="section-label">Selected work</p>
-      <h2 class="section-title" id="work-title">Recent brand & web engagements.</h2>
-      <p class="section-lead">A sample of identity and digital work shaped for clarity at every scale.</p>
+      <div class="deco-rule" aria-hidden="true"></div>
+      <h2 class="section-title" id="work-title">Brand & web systems in practice.</h2>
+      <p class="section-lead">Identity programs shaped for clarity at every scale — from mark to site.</p>
     </div>
     <div class="work-grid">
       {
@@ -111,22 +150,69 @@ const services = [
     </div>
   </section>
 
+  <section class="section reveal" aria-labelledby="influence-title">
+    <p class="section-label">Lineage</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="influence-title">Drawn from modern graphic cultures.</h2>
+    <p class="section-lead">
+      The studio language is a synthesis — not costume. Swedish system thinking, Japanese reduction, Deco structure, and mid-century type energy.
+    </p>
+    <div class="influence-grid">
+      <article class="influence">
+        <span class="tag">Sweden</span>
+        <h3>Eksell to Bedow</h3>
+        <p>
+          From Olle Eksell’s Mazetti program and “Design = Economy” to Clara von Zweigbergk’s color craft
+          and Stockholm studios like Bedow and Stockholm Design Lab — clarity as serious business.
+        </p>
+      </article>
+      <article class="influence">
+        <span class="tag">Japan</span>
+        <h3>Ma & the corporate mark</h3>
+        <p>
+          Yusaku Kamekura’s Olympic and corporate marks showed how Japanese family-crest reduction meets
+          modernist geometry. Negative space does the heavy lifting.
+        </p>
+      </article>
+      <article class="influence">
+        <span class="tag">Art Deco</span>
+        <h3>Geometry with presence</h3>
+        <p>
+          Tall spaced type, stepped rules, and symmetrical frames — luxury through structure, not
+          decoration for its own sake.
+        </p>
+      </article>
+      <article class="influence">
+        <span class="tag">Family business</span>
+        <h3>Heritage as strategy</h3>
+        <p>
+          Research into brands like Peregrine, Pitcairn, and Kocbek shows: protect provenance, modernize
+          the system, and keep identity continuous across generations.
+        </p>
+      </article>
+    </div>
+    <div class="cta-row" style="margin-top: 2rem;">
+      <a class="btn btn-outline" href="/influences">Read the full research</a>
+    </div>
+  </section>
+
   <section class="section reveal" aria-labelledby="process-title">
     <p class="section-label">How we work</p>
-    <h2 class="section-title" id="process-title">A focused path from brief to launch.</h2>
-    <p class="section-lead">Fewer meetings. Clear milestones. Work that stays sharp after handoff.</p>
+    <div class="deco-rule" aria-hidden="true"></div>
+    <h2 class="section-title" id="process-title">A focused path from brief to system.</h2>
+    <p class="section-lead">Fewer meetings. Clear milestones. Identity that still works after handoff.</p>
     <div class="process-steps">
       <article class="process-step">
         <h3>Discover</h3>
-        <p>We learn your audience, constraints, and competitive space — then define the problem worth solving.</p>
+        <p>We map audience, competitors, and family story — what must continue, what must evolve.</p>
       </article>
       <article class="process-step">
         <h3>Design</h3>
-        <p>Brand directions and site systems are explored with intent, then refined into a single coherent language.</p>
+        <p>Brand directions and site systems refined into one coherent language with room to breathe.</p>
       </article>
       <article class="process-step">
         <h3>Deliver</h3>
-        <p>Guidelines, assets, and a production-ready website — documented so your team can keep building.</p>
+        <p>Guidelines, assets, and a production-ready website — documented for the next generation of use.</p>
       </article>
     </div>
   </section>
@@ -144,14 +230,15 @@ const services = [
       </div>
       <div class="about-copy">
         <p class="section-label">The studio</p>
+        <div class="deco-rule" aria-hidden="true"></div>
         <h2 class="section-title" id="about-title">Independent. Detail-obsessed. Built for lasting marks.</h2>
         <p>
-          D. Philhower Studio is a graphic design practice focused on brand creation and website design —
-          helping founders and teams show up with confidence.
+          D. Philhower Studio is a graphic design practice focused on brand creation, corporate identity
+          for family businesses, and website design.
         </p>
         <p>
-          Every engagement starts with craft: typography that holds, color with purpose, and interfaces that
-          feel inevitable once you see them.
+          Every engagement starts with craft: typography that holds, color with purpose, and interfaces
+          that feel inevitable once you see them.
         </p>
         <div class="cta-row">
           <a class="btn btn-ink" href="/about">About the studio</a>
@@ -162,8 +249,8 @@ const services = [
 
   <section class="contact-strip reveal" aria-labelledby="cta-title">
     <div class="contact-strip-inner">
-      <h2 id="cta-title">Ready for a brand people remember?</h2>
-      <p>Tell us where you are and where you want to go. We’ll reply within two business days.</p>
+      <h2 id="cta-title">Ready for an identity people remember?</h2>
+      <p>Tell us where the business has been — and where it needs to go next.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="/contact">Start a project</a>
         <a class="btn btn-ghost" href="mailto:hello@dphilhowerstudio.com">Email the studio</a>
