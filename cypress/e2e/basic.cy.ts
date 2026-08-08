@@ -21,12 +21,9 @@ describe('D. Philhower Studio site', () => {
     cy.get('.type-assemblage .type-cell').should('have.length.greaterThan', 8)
   })
 
-  it('navigates to influences research', () => {
-    cy.contains('a', 'See the influences').click()
-    cy.location('pathname').should('eq', '/influences')
-    cy.get('h1').contains('Research behind the studio language')
-    cy.contains('Swedish graphic designers')
-    cy.contains('Principles for family corporate identity')
+  it('navigates to the design system', () => {
+    cy.contains('a', 'The design system').click()
+    cy.location('pathname').should('eq', '/system')
+    cy.get('h1').contains('Clarity, heritage')
   })
 })
-

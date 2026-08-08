@@ -1,0 +1,205 @@
+---
+import Layout from '../components/Layout.astro';
+
+const principles = [
+  {
+    title: 'Clarity as character',
+    body: 'Swedish modernism gives honesty, simplicity, and functional warmth. Uncluttered layouts. Soft geometry. Purposeful restraint.',
+  },
+  {
+    title: 'Space as meaning',
+    body: 'Japanese ma turns emptiness into emotional presence. Space is a pause, a breath, a moment of intimacy — never leftover.',
+  },
+  {
+    title: 'Geometry as architecture',
+    body: 'Art Deco contributes verticality and rhythm. Tall type. Stepped forms. Symmetry with intention — structure, not costume.',
+  },
+  {
+    title: 'Typography as environment',
+    body: 'Dorfsman, Lubalin, and Carnase bring typographic energy. Oversized type panels. Letterforms as texture. Words as rooms.',
+  },
+  {
+    title: 'Heritage as identity',
+    body: 'Family lineage is the emotional core. Continuity. Craft. Devotion. Quiet sincerity that does not need to perform.',
+  },
+];
+
+const palette = [
+  { name: 'Ink / Navy', value: '#1A1F2B', role: 'Structure, type, permanence' },
+  { name: 'Stone', value: '#E8E6E1', role: 'Primary field — soft neutral' },
+  { name: 'Paper', value: '#F0EFEB', role: 'Light surface, breathing room' },
+  { name: 'Brass', value: '#A8926A', role: 'Deco warmth — used as punctuation' },
+  { name: 'Pine', value: '#5C6B5A', role: 'Japandi calm — sparse accent' },
+  { name: 'Signal blue', value: '#4A6FA5', role: 'Muted primary — rare emphasis' },
+];
+---
+
+<Layout
+  title="Design System"
+  description="Clarity, Heritage & Spatial Rhythm — the design system for D. Philhower Studio."
+  path="/system"
+  headerTheme="dark"
+>
+  <header class="page-hero">
+    <p class="brand-line">Design system</p>
+    <div class="deco-steps" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h1>Clarity, heritage & spatial rhythm.</h1>
+    <p>
+      A living identity framework for the studio site, brand materials, and long-term heritage storytelling —
+      warm, intimate, devoted, and narrative-driven.
+    </p>
+  </header>
+
+  <section class="section reveal" aria-labelledby="principles-title">
+    <p class="section-label">Identity principles</p>
+    <div class="deco-steps" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h2 class="section-title" id="principles-title">The why behind every mark.</h2>
+    <div class="principle-list">
+      {
+        principles.map((item) => (
+          <article class="principle reveal-step">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="type-title">
+    <p class="section-label">Typography</p>
+    <div class="deco-steps" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h2 class="section-title" id="type-title">Architectural sans. Heritage serif. Deco labels.</h2>
+    <ul class="lineage">
+      <li>
+        <strong>Syne — primary display</strong>
+        <span>Tall, elegant sans with architectural proportions. Large-scale type blocks. Soft human curves.</span>
+      </li>
+      <li>
+        <strong>Libre Baskerville — heritage voice</strong>
+        <span>Used sparingly for intimate storytelling, quiet zones, and reflective leads.</span>
+      </li>
+      <li>
+        <strong>Tenor Sans — deco labels</strong>
+        <span>Wide tracking, uppercase section markers, tall vertical rhythm.</span>
+      </li>
+      <li>
+        <strong>Figtree — body</strong>
+        <span>Warm clarity for reading — Scandinavian honesty without coldness.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section reveal" aria-labelledby="space-title">
+    <p class="section-label">Grid & layout</p>
+    <div class="deco-steps" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h2 class="section-title" id="space-title">Rooms that breathe.</h2>
+    <p class="section-lead heritage">
+      Wide gutters. Ample margins. Negative space treated as active content. Sections behave like rooms in a home —
+      monumental intros, quiet content zones, stepped Deco dividers.
+    </p>
+    <div class="influence-grid">
+      <article class="influence">
+        <span class="tag">Monumental</span>
+        <h3>CBS-scale intros</h3>
+        <p>Large type panels and type-wall assemblages where words become environment.</p>
+      </article>
+      <article class="influence">
+        <span class="tag">Quiet</span>
+        <h3>Japandi pauses</h3>
+        <p>Heritage lines that float in space — intimacy through restraint.</p>
+      </article>
+      <article class="influence">
+        <span class="tag">Stepped</span>
+        <h3>Deco rhythm</h3>
+        <p>Tiered brass rules and vertical movement that echo architectural form.</p>
+      </article>
+      <article class="influence">
+        <span class="tag">Asymmetry</span>
+        <h3>Ma in composition</h3>
+        <p>Intentional imbalance so the empty side can speak.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="color-title">
+    <p class="section-label">Color</p>
+    <div class="deco-steps" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h2 class="section-title" id="color-title">Neutrals dominate. Accents punctuate.</h2>
+    <ul class="lineage">
+      {
+        palette.map((swatch) => (
+          <li>
+            <strong>
+              {swatch.name}{' '}
+              <span style="font-family: var(--font-deco); font-weight: 400; letter-spacing: 0.08em; color: var(--warm-gray);">
+                {swatch.value}
+              </span>
+            </strong>
+            <span>{swatch.role}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section reveal" aria-labelledby="motion-title">
+    <p class="section-label">Motion & voice</p>
+    <div class="deco-steps" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h2 class="section-title" id="motion-title">Slow transitions. Soft confidence.</h2>
+    <div class="influence-grid">
+      <article class="influence">
+        <span class="tag">Motion</span>
+        <h3>Stepped reveals · breathing fades</h3>
+        <p>Calm vertical movement. Spatial pauses. Large-type slide-ins that never rush the reader.</p>
+      </article>
+      <article class="influence">
+        <span class="tag">Voice</span>
+        <h3>Warm · intimate · devoted</h3>
+        <p>
+          Speak as if telling a story from the family workshop. Quiet confidence. Emotion present but
+          understated. No corporate jargon.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="summary-title">
+    <p class="section-label">Summary</p>
+    <div class="deco-steps" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h2 class="section-title" id="summary-title">Influence → application</h2>
+    <ul class="lineage">
+      <li>
+        <strong>Clarity ← Swedish modernism</strong>
+        <span>Grid, color restraint, typography honesty.</span>
+      </li>
+      <li>
+        <strong>Ma ← Japanese spatial philosophy</strong>
+        <span>Layout pauses, imagery asymmetry, quiet zones.</span>
+      </li>
+      <li>
+        <strong>Geometry ← Art Deco</strong>
+        <span>Type proportions, stepped dividers, vertical rhythm.</span>
+      </li>
+      <li>
+        <strong>Type energy ← CBS cafeteria</strong>
+        <span>Large-scale type blocks and assemblage walls.</span>
+      </li>
+      <li>
+        <strong>Heritage ← family lineage</strong>
+        <span>Voice, imagery of craft, narrative continuity.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="contact-strip reveal" aria-labelledby="sys-cta">
+    <div class="contact-strip-inner">
+      <h2 id="sys-cta">Let this system hold your story.</h2>
+      <p>Especially when the name belongs to more than one generation.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/contact">Begin a conversation</a>
+        <a class="btn btn-ghost" href="/influences">See the research</a>
+      </div>
+    </div>
+  </section>
+</Layout>

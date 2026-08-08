@@ -4,15 +4,15 @@ import Layout from '../components/Layout.astro';
 
 <Layout
   title="Contact"
-  description="Start a brand, corporate identity, or website project with D. Philhower Studio."
+  description="Begin a conversation with D. Philhower Studio about brand, family identity, or a website."
   path="/contact"
   headerTheme="dark"
 >
   <header class="page-hero">
     <p class="brand-line">D. Philhower Studio</p>
-    <div class="deco-rule" aria-hidden="true"></div>
-    <h1>Tell us about the work ahead.</h1>
-    <p>Share a few details and we’ll reply within two business days.</p>
+    <div class="deco-steps" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h1>Tell us the chapter ahead.</h1>
+    <p>A few details are enough. We’ll reply within two business days — with care, not a script.</p>
   </header>
 
   <section class="section contact-layout reveal" aria-label="Contact">
@@ -28,7 +28,7 @@ import Layout from '../components/Layout.astro';
         </p>
       </div>
       <div>
-        <p class="section-label">Typical timeline</p>
+        <p class="section-label">Typical pace</p>
         <p style="color: var(--ink-soft); max-width: 30ch;">
           Brand systems from 4–8 weeks. Websites from 6–12 weeks, depending on scope.
         </p>
@@ -37,7 +37,7 @@ import Layout from '../components/Layout.astro';
 
     <form class="contact-form" id="contact-form" novalidate>
       <div class="form-success" role="status">
-        Thanks — your message is ready to send. We’ll be in touch soon. For now, you can also email
+        Thank you — your note is ready to send. You can also write us anytime at
         <a href="mailto:hello@dphilhowerstudio.com" style="color: var(--brass-soft);">hello@dphilhowerstudio.com</a>.
       </div>
       <div class="form-fields">
@@ -65,12 +65,12 @@ import Layout from '../components/Layout.astro';
           </select>
         </div>
         <div class="field">
-          <label for="message">Project notes</label>
+          <label for="message">A little of the story</label>
           <textarea
             id="message"
             name="message"
             required
-            placeholder="Goals, history, timeline, links — anything useful…"></textarea>
+            placeholder="Where you’ve been, where you’re headed, links — whatever feels useful…"></textarea>
         </div>
         <button class="btn btn-ink" type="submit">Send message</button>
         <p class="form-note">
