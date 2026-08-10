@@ -25,8 +25,22 @@ if ! wp core is-installed --path=/var/www/html 2>/dev/null; then
 fi
 
 echo "==> Installing WooCommerce..."
-wp plugin install woocommerce --activate --path=/var/www/html || true
+# Pin a WC release compatible with WordPress 6.7 in this stack.
+# (Latest WooCommerce may require a newer WP than the pinned image.)
+if ! wp plugin is-installed woocommerce --path=/var/www/html 2>/dev/null; then
+  wp plugin install woocommerce --version=9.8.5 --activate --path=/var/www/html
+else
+  wp plugin activate woocommerce --path=/var/www/html || true
+fi
 wp plugin activate restaurant-kitchen-tickets --path=/var/www/html || true
+
+echo "==> Permalinks + WooCommerce pages..."
+wp rewrite structure '/%postname%/' --path=/var/www/html
+wp rewrite flush --path=/var/www/html
+wp wc tool run install_pages --user=1 --path=/var/www/html 2>/dev/null || true
+
+# Enable Cash on Delivery for easy local order testing.
+wp eval 'update_option("woocommerce_cod_settings", array("enabled"=>"yes","title"=>"Cash on delivery","description"=>"Pay when you pick up or receive your order.","instructions"=>"","enable_for_methods"=>array(),"enable_for_virtual"=>"yes"));' --path=/var/www/html
 
 echo "==> Configuring WooCommerce basics..."
 wp option update woocommerce_store_address "100 Market Street" --path=/var/www/html

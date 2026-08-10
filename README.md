@@ -21,6 +21,13 @@ docker compose up -d
 docker compose exec wpcli sh /scripts/setup.sh
 ```
 
+If containers cannot reach each other (some nested/cloud Docker hosts), use the host-network override:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.host.yml up -d
+docker compose -f docker-compose.yml -f docker-compose.host.yml exec wpcli sh /scripts/setup.sh
+```
+
 Then open:
 
 | URL | Purpose |

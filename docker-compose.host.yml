@@ -1,0 +1,33 @@
+# Override for environments where Docker bridge ICC is broken
+# (e.g. some nested/cloud VMs). Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.host.yml up -d
+services:
+  db:
+    network_mode: host
+    command:
+      - --bind-address=127.0.0.1
+      - --port=3306
+      - --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uwordpress", "-pwordpress"]
+
+  wordpress:
+    network_mode: host
+    ports: []
+    environment:
+      WORDPRESS_PORT: ${WORDPRESS_PORT:-8080}
+      WORDPRESS_DB_HOST: 127.0.0.1:3306
+    entrypoint:
+      - /bin/bash
+      - -lc
+      - |
+        set -e
+        PORT="$${WORDPRESS_PORT:-8080}"
+        sed -i "s/Listen 80/Listen $${PORT}/g" /etc/apache2/ports.conf
+        sed -i "s/:80>/:$${PORT}>/g" /etc/apache2/sites-available/000-default.conf
+        exec docker-entrypoint.sh apache2-foreground
+
+  wpcli:
+    network_mode: host
+    environment:
+      WORDPRESS_DB_HOST: 127.0.0.1:3306
